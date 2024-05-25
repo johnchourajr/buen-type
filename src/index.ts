@@ -10,5 +10,4 @@
  *
  * @module
  */
-
-export * from "./createRemClamp.ts";
+export { createRemClamp } from "./utils/createRemClamp.ts";

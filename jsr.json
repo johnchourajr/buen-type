@@ -1,5 +1,9 @@
 {
   "name": "@buen/type",
   "version": "1.0.0",
-  "exports": "./mod.ts"
+  "exports": "./src/index.ts",
+  "publish": {
+    "include": ["src/**/*.ts", "README.md"],
+    "exclude": [".prettierrc", ".github/**/*"]
+  }
 }
