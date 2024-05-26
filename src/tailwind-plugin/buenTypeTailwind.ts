@@ -3,21 +3,26 @@ import { CustomTypeDefinitions, TypeDefinition } from "../types.ts";
 import { createRemClamp } from "../utils/createRemClamp.ts";
 import { typedKeys } from "../utils/typedKeys.ts";
 
+// Type definition for the addUtilities function parameter
+interface AddUtilities {
+  (utilities: Record<string, any>, options?: any): void;
+}
+
 export const buenTypeTailwind = function (
-  { addUtilities },
+  { addUtilities }: { addUtilities: AddUtilities },
   customDefinitions?: CustomTypeDefinitions
 ) {
   const generateStyles = (definition: TypeDefinition) => {
-    let styles = {
+    let styles: TypeDefinition = {
       fontFamily: definition.fontFamily,
       fontWeight: definition.fontWeight,
       lineHeight: definition.lineHeight,
       letterSpacing: definition.letterSpacing,
       textTransform: definition.textTransform,
-      fontSize: definition.size,
+      fontSize: definition.fontSize,
     };
-    if (definition.size) {
-      styles.fontSize = definition.size;
+    if (definition.fontSize) {
+      styles.fontSize = definition.fontSize;
     }
     if (definition.clamp) {
       styles.fontSize = createRemClamp(...definition.clamp);
@@ -32,7 +37,7 @@ export const buenTypeTailwind = function (
   };
   const mergedTexts = { ...DEFAULT_TEXT, ...customDefinitions?.customTexts };
 
-  let headlineUtilities = {};
+  let headlineUtilities: Record<string, any> = {};
   typedKeys(mergedHeadlines).forEach((key) => {
     const style = mergedHeadlines[key];
     if (style) {
@@ -40,7 +45,7 @@ export const buenTypeTailwind = function (
     }
   });
 
-  let textUtilities = {};
+  let textUtilities: Record<string, any> = {};
   typedKeys(mergedTexts).forEach((key) => {
     const style = mergedTexts[key];
     if (style) {

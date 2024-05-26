@@ -48,21 +48,21 @@ export const DEFAULT_HEADLINE: TypeDefinitions = {
 export const DEFAULT_TEXT: TypeDefinitions = {
   title: {
     id: "text-title",
-    size: "1.5rem",
+    fontSize: "1.5rem",
     lineHeight: 1.25,
     fontWeight: "normal",
     letterSpacing: "0.1em",
   },
   paragraph: {
     id: "text-paragraph",
-    size: "1.25rem",
+    fontSize: "1.25rem",
     lineHeight: 1.35,
     fontWeight: "normal",
     letterSpacing: "0.05em",
   },
   string: {
     id: "text-string",
-    size: ".9rem",
+    fontSize: ".9rem",
     lineHeight: 1.25,
     fontWeight: "normal",
     letterSpacing: "0.15em",
@@ -70,14 +70,14 @@ export const DEFAULT_TEXT: TypeDefinitions = {
 
   body: {
     id: "text-body",
-    size: "0.8rem",
+    fontSize: "0.8rem",
     lineHeight: 1.25,
     fontWeight: "normal",
     letterSpacing: "0.15em",
   },
   caption: {
     id: "text-caption",
-    size: "0.65rem",
+    fontSize: "0.65rem",
     lineHeight: 1.25,
     fontWeight: "normal",
     letterSpacing: "0.15em",

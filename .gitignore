@@ -1,0 +1,6 @@
+# write your .gitignore file here
+node_modules
+.DS_Store
+.env
+.env.*
+

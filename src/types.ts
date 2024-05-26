@@ -4,7 +4,7 @@ export type TypeDefinition = {
   lineHeight?: string | number;
   letterSpacing?: string;
   textTransform?: string;
-  size?: string;
+  fontSize?: string;
   clamp?: [number, number];
 };
 
