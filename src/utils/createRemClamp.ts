@@ -8,7 +8,7 @@ export function createRemClamp(
   minFontSize: number,
   maxFontSize: number,
   minScreenSize: number = 1024,
-  maxScreenSize: number = 1440
+  maxScreenSize: number = 1440,
 ): string {
   const minWidth = minScreenSize / 16;
   const maxWidth = maxScreenSize / 16;

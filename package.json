@@ -12,8 +12,10 @@
   },
   "devDependencies": {
     "@types/react": "latest",
-    "react": "^18.3.1",
+    "eslint": "^9.3.0",
     "js-tokens": "^4.0.0",
-    "loose-envify": "^1.4.0"
+    "loose-envify": "^1.4.0",
+    "prettier": "^3.2.5",
+    "react": "^18.3.1"
   }
 }

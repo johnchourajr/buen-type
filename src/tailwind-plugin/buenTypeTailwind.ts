@@ -12,7 +12,7 @@ type AddUtilities = {
  */
 export const buenTypeTailwind = function (
   { addUtilities }: { addUtilities: AddUtilities },
-  customDefinitions?: CustomTypeDefinitions
+  customDefinitions?: CustomTypeDefinitions,
 ) {
   const generateStyles = (definition: TypeDefinition) => {
     let styles: TypeDefinition = {

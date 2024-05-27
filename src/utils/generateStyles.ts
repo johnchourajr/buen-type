@@ -9,7 +9,7 @@ import { createRemClamp } from "./createRemClamp";
 
 export const generateStyles = (
   type: "headline" | "text",
-  key: string
+  key: string,
 ): CSSOutput => {
   let definition: TypeDefinition | undefined;
 
