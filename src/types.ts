@@ -23,6 +23,15 @@ export type TypeDefinition = {
   clamp?: [number, number];
 };
 
+export type CSSOutput = {
+  fontFamily?: string;
+  fontWeight?: string | number;
+  lineHeight?: string | number;
+  letterSpacing?: string;
+  textTransform?: string;
+  fontSize?: string;
+};
+
 export type TypeDefinitions = Record<string, TypeDefinition>;
 
 export type TypeDefinitionHeadlines = Record<
