@@ -27,17 +27,6 @@
 export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
 
 /**
- * A module that provides a React component for rendering text.
- *
- * @example
- * ```tsx
- * import { BuenType } from "@buen/type";
- *
- * <BuenType type="headline" variant="display-xl">Hello, world!</BuenType>
- */
-export { BuenType } from "./react-component/BuenType.tsx";
-
-/**
  * A module that provides a function to create a `rem`-based `clamp` function.
  *
  * @example
