@@ -3,11 +3,13 @@ import { CustomTypeDefinitions, TypeDefinition } from "../types.ts";
 import { createRemClamp } from "../utils/createRemClamp.ts";
 import { typedKeys } from "../utils/typedKeys.ts";
 
-// Type definition for the addUtilities function parameter
-interface AddUtilities {
+type AddUtilities = {
   (utilities: Record<string, any>, options?: any): void;
-}
+};
 
+/**
+ * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
+ */
 export const buenTypeTailwind = function (
   { addUtilities }: { addUtilities: AddUtilities },
   customDefinitions?: CustomTypeDefinitions

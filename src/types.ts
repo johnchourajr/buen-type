@@ -1,3 +1,18 @@
+export type DefaultHeadlineTypes =
+  | "display-xxl"
+  | "display-xl"
+  | "display-lg"
+  | "display-md"
+  | "display-sm"
+  | "display-xs";
+
+export type DefaultTextTypes =
+  | "title"
+  | "paragraph"
+  | "string"
+  | "body"
+  | "caption";
+
 export type TypeDefinition = {
   fontFamily?: string;
   fontWeight?: string | number;
@@ -8,9 +23,14 @@ export type TypeDefinition = {
   clamp?: [number, number];
 };
 
-export type TypeDefAndId = TypeDefinition & { id: string };
+export type TypeDefinitions = Record<string, TypeDefinition>;
 
-export type TypeDefinitions = Record<string, TypeDefinition | TypeDefAndId>;
+export type TypeDefinitionHeadlines = Record<
+  DefaultHeadlineTypes,
+  TypeDefinition
+>;
+
+export type TypeDefinitionTexts = Record<DefaultTextTypes, TypeDefinition>;
 
 export type CustomTypeDefinitions = {
   customHeadlines?: Record<string, TypeDefinition>;
