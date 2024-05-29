@@ -175,17 +175,19 @@ The following is an example of how to define custom type definitions:
 
 ```tsx
 // type-config.ts
+
 const customHeadlines = {
   'custom-display': {
     fontFamily: 'Arial, sans-serif',
-    // styles
+    // use stype properties
   },
   // other headline styles
 }
 
 const customTexts = {
   'custom-paragraph': {
-    // styles
+    fontFamily: 'Arial, sans-serif',
+    // use stype properties
   },
   // other text styles
 }
