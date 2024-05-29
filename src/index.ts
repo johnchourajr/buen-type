@@ -6,14 +6,16 @@
  * // tailwind.config.js
  * import { buenTypeTailwind } from "@buen/type";
  *
- * const typePlugin = buenTypeTailwind({ addUtilities }, {
- *  customHeadlines: {
- *    ... // define custom headlines
- *  },
- *  customTexts: {
- *    ... // define custom texts
- *  }
- * });
+ * function typePlugin({ addUtilities }) {
+ *  buenTypeTailwind({ addUtilities }, {
+ *    customHeadlines: {
+ *    //  ... // define custom headlines
+ *    },
+ *   customTexts: {
+ *    //  ... // define custom texts
+ *    }
+ *  });
+ * };
  *
  * module.exports = {
  *  ...
