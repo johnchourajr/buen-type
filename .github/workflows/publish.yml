@@ -12,5 +12,33 @@ jobs:
       contents: read
       id-token: write # The OIDC ID token is used for authentication with JSR.
     steps:
-      - uses: actions/checkout@v4
-      - run: npx jsr publish
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14' # or any version your project requires
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get version from jsr.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' ./jsr.json)
+          echo "::set-output name=version::$VERSION"
+
+      - name: Publish with JSR
+        id: publish_jsr
+        run: npx jsr publish
+
+      - name: Create Git tag
+        if: success()
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v$VERSION" -m "Release version $VERSION"
+          git push origin "v$VERSION"
