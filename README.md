@@ -73,6 +73,7 @@ module.exports = {
 ```
 
 ### Defaults
+The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) establish a basic type scale for building upon
 
 #### Default Headline Types
 These are the default headline types that can be used in the project:
@@ -102,7 +103,6 @@ These are the default text types that can be used in the project:
 | `textTransform` | `string`           | The transformation applied to the text (e.g., uppercase).    |
 | `fontSize`      | `string`           | The size of the font.                                        |
 | `clamp`         | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
-
 
 ### Custom Types
 
