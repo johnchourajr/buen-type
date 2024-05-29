@@ -2,6 +2,39 @@
 
 A utility library for managing typographic scales in Tailwind CSS or React.
 
+**Contents**
+- [@buen/type](#buentype)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Add Plugin](#add-plugin)
+    - [Custom Type](#custom-type)
+  - [Defaults](#defaults)
+  - [Type Properties](#type-properties)
+    - [Clamp Property](#clamp-property)
+  - [Custom Style Keys](#custom-style-keys)
+
+## Installation
+
+**NPM**
+```bash
+npx jsr add @buen/type
+```
+
+**Deno**
+```bash
+deno add @buen/type
+```
+
+**Yarn**
+```bash
+yarn dlx jsr add @buen/type
+```
+
+**PNPM**
+```bash
+pnpm dlx jsr add @buen/type
+```
+
 ## Usage
 
 ### Add Plugin
@@ -20,7 +53,7 @@ module.exports = {
 
 ### Custom Type
 
-1. Define custom styles, using either the default keys or by expanding upon them
+1. Define custom styles, using either the default keys. You can also add [custom keys](#custom-style-keys).
 
 ```ts
 // type-config.ts
@@ -75,28 +108,34 @@ module.exports = {
 3. Use tailwind utility classes in the code
 
 ```tsx
+// SomeComponent.tsx
+
+export const SomeComponent = () => (
+  <div>
+    <h1 className="headline-display-xl">Hello World</h1>
+    <p className="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+);
 
 ```
 
 ## Defaults
-The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) establish a basic type scale for building upon
+The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
 
-#### Default Headline Types
-These are the default headline types that can be used in the project:
-- display-xxl
-- display-xl
-- display-lg
-- display-md
-- display-sm
-- display-xs
+**Default Headline Types:**
+- `display-xxl`
+- `display-xl`
+- `display-lg`
+- `display-md`
+- `display-sm`
+- `display-xs`
 
-#### Default Text Types
-These are the default text types that can be used in the project:
-- title
-- paragraph
-- string
-- body
-- caption
+**Default Text Types:**
+- `title`
+- `paragraph`
+- `string`
+- `body`
+- `caption`
 
 ## Type Properties
 
@@ -110,10 +149,24 @@ These are the default text types that can be used in the project:
 | `fontSize`      | `string`           | The size of the font.                                        |
 | `clamp`         | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
 
-## Custom Style Types
+### Clamp Property
 
-Example Usage
-Here's an example of how you might define custom type definitions:
+The clamp property is used to set the range for font sizes for a particular type. The first value represents the minimum size, while the second value represents the maximum size. Consequently, the resulting font size will dynamically scale between 1024px and 1440px.
+
+```tsx
+const customHeadlines = {
+  'display-xl': {
+    fontFamily: 'Arial, sans-serif',
+    clamp: [4.5, 9],
+  },
+}
+```
+
+## Custom Style Keys
+
+When creating custom type definitions, either the default keys can be used or they can be expanded. They should be written in kebab-case strings.
+
+The following is an example of how to define custom type definitions:
 
 ```tsx
 const customHeadlines = {
