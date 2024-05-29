@@ -1,6 +1,8 @@
+![image](https://github.com/johnchourajr/buen-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
+
 # @buen/type
 
-A utility library for managing typographic scales in Tailwind CSS or React.
+A utility library for managing typographic scales in Tailwind CSS.
 
 **Contents**
 - [@buen/type](#buentype)
