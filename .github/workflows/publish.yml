@@ -41,8 +41,7 @@ jobs:
       - name: Create Git tag
         env:
           VERSION: ${{ env.VERSION }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a "v$VERSION" -m "Release version $VERSION"
-          git push origin "v$VERSION"
+          git push https://x-access-token:${GH_PAT}@github.com/johnchourajr/buen-type.git "v$VERSION"
