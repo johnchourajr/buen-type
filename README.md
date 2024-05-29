@@ -41,6 +41,7 @@ pnpm dlx jsr add @buen/type
 
 ```tsx
 // tailwind.config.js
+
 import { buenTypeTailwind } from "@buen/type";
 
 module.exports = {
@@ -67,7 +68,7 @@ const customHeadlines = {
     lineHeight: 1,
     textTransform: 'uppercase',
   },
-  // ...
+  // other headline styles
 }
 
 const customTexts = {
@@ -79,7 +80,7 @@ const customTexts = {
     lineHeight: 1.5,
     textTransform: 'none',
   },
-  // ...
+  // other text styles
 }
 ```
 
@@ -87,6 +88,7 @@ const customTexts = {
 
 ```tsx
 // tailwind.config.ts
+
 import { buenTypeTailwind } from "@buen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
@@ -154,11 +156,14 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 The clamp property is used to set the range for font sizes for a particular type. The first value represents the minimum size, while the second value represents the maximum size. Consequently, the resulting font size will dynamically scale between 1024px and 1440px.
 
 ```tsx
+// type-config.ts
+
 const customHeadlines = {
   'display-xl': {
     fontFamily: 'Arial, sans-serif',
     clamp: [4.5, 9],
   },
+  // other styles
 }
 ```
 
@@ -169,16 +174,19 @@ When creating custom type definitions, either the default keys can be used or th
 The following is an example of how to define custom type definitions:
 
 ```tsx
+// type-config.ts
 const customHeadlines = {
   'custom-display': {
     fontFamily: 'Arial, sans-serif',
     // styles
   },
+  // other headline styles
 }
 
 const customTexts = {
   'custom-paragraph': {
     // styles
   },
+  // other text styles
 }
 ```
