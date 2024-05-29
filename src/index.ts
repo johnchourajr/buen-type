@@ -2,27 +2,58 @@
  * A module that converts an object of headlinea and text defs into Tailwind CSS utilities.
  *
  * @example
+ *
+ *  1. Define custom styles, using either the default keys or by expanding upon them
+ *
  * ```ts
- * // tailwind.config.js
+ * // type-config.ts
+ *
+ * const customHeadlines = {
+ *   'display-xl': {
+ *     fontFamily: "'Inter', 'sans-serif'",
+ *     fontWeight: 'bold',
+ *     clamp: [4.5, 9],
+ *     letterSpacing: '-0.1em',
+ *     lineHeight: 1,
+ *     textTransform: 'uppercase',
+ *   },
+ *   // ...
+ * }
+ *
+ * const customTexts = {
+ *   'body': {
+ *     fontFamily: "'Inter', 'sans-serif'",
+ *     fontWeight: 'normal',
+ *     fontSize: '1.1rem'
+ *     letterSpacing: '0em',
+ *     lineHeight: 1.5,
+ *     textTransform: 'none',
+ *   },
+ *   // ...
+ * }
+ * ```
+ *
+ * 2. Add the custom styles to the plugin
+ *
+ * ```tsx
+ * // tailwind.config.ts
  * import { buenTypeTailwind } from "@buen/type";
+ * import { customHeadlines, customTexts } from "./type-config";
  *
  * function typePlugin({ addUtilities }) {
- *  buenTypeTailwind({ addUtilities }, {
- *    customHeadlines: {
- *    //  ... // define custom headlines
- *    },
- *   customTexts: {
- *    //  ... // define custom texts
- *    }
- *  });
+ *   buenTypeTailwind({ addUtilities }, {
+ *     customHeadlines,
+ *     customTexts
+ *   });
  * };
  *
  * module.exports = {
- *  ...
- *  plugins: [
- *    typePlugin
- *  ]
+ *   //  ...
+ *   plugins: [
+ *     typePlugin
+ *   ]
  * };
+ * ```
  *
  * @module
  */

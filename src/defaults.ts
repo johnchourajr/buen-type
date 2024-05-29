@@ -58,7 +58,6 @@ export const DEFAULT_TEXT: TypeDefinitionTexts = {
     fontWeight: "normal",
     letterSpacing: "0.15em",
   },
-
   body: {
     fontSize: "0.8rem",
     lineHeight: 1.25,
