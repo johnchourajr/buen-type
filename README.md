@@ -4,7 +4,7 @@ A utility library for managing typographic scales in Tailwind CSS or React.
 
 ## Usage
 
-## Add Plugin
+### Add Plugin
 
 ```tsx
 // tailwind.config.js
@@ -72,7 +72,13 @@ module.exports = {
 };
 ```
 
-### Defaults
+3. Use tailwind utility classes in the code
+
+```tsx
+
+```
+
+## Defaults
 The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) establish a basic type scale for building upon
 
 #### Default Headline Types
@@ -92,7 +98,7 @@ These are the default text types that can be used in the project:
 - body
 - caption
 
-### Type Properties
+## Type Properties
 
 | Property        | Type               | Description                                                  |
 | --------------- | ------------------ | ------------------------------------------------------------ |
@@ -104,7 +110,7 @@ These are the default text types that can be used in the project:
 | `fontSize`      | `string`           | The size of the font.                                        |
 | `clamp`         | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
 
-### Custom Types
+## Custom Style Types
 
 Example Usage
 Here's an example of how you might define custom type definitions:
