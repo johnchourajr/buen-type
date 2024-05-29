@@ -10,10 +10,10 @@ type AddUtilities = {
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  */
-export const buenTypeTailwind = function (
+export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },
   customDefinitions?: CustomTypeDefinitions,
-) {
+): void {
   const generateStyles = (definition: TypeDefinition) => {
     let styles: TypeDefinition = {
       fontFamily: definition.fontFamily,
@@ -57,4 +57,4 @@ export const buenTypeTailwind = function (
 
   addUtilities(headlineUtilities);
   addUtilities(textUtilities);
-};
+}
