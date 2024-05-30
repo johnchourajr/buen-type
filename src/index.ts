@@ -72,3 +72,15 @@ export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
  * @module
  */
 export { createRemClamp } from "./utils/createRemClamp.ts";
+
+export type {
+  CustomTypeDefinitions,
+  TypeDefinition,
+  TypeDefinitionHeadlines,
+  TypeDefinitionTexts,
+} from "./types.ts";
+
+export {
+  DEFAULT_HEADLINE as headlineDefault,
+  DEFAULT_TEXT as textDefault,
+} from "./defaults.ts";
