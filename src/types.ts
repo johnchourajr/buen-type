@@ -14,6 +14,7 @@ export type DefaultTextTypes =
   | "caption";
 
 export type TypeDefinition = {
+  _className?: string;
   fontFamily?: string;
   fontWeight?: string | number;
   lineHeight?: string | number;
