@@ -1,5 +1,8 @@
 import { TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types.ts";
 
+/**
+ * Default headline object
+ */
 export const DEFAULT_HEADLINE: TypeDefinitionHeadlines = {
   "display-xxl": {
     _className: "headline-display-xxl",
@@ -45,6 +48,9 @@ export const DEFAULT_HEADLINE: TypeDefinitionHeadlines = {
   },
 };
 
+/**
+ * Default text object
+ */
 export const DEFAULT_TEXT: TypeDefinitionTexts = {
   title: {
     _className: "text-title",
