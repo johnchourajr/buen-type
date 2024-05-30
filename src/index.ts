@@ -73,14 +73,26 @@ export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
  */
 export { createRemClamp } from "./utils/createRemClamp.ts";
 
+/**
+ * Types for the Buen Type module, for use when implementing custom type definitions.
+ *
+ * @module
+ */
 export type {
   CustomTypeDefinitions,
   TypeDefinition,
   TypeDefinitionHeadlines,
-  TypeDefinitionTexts,
+  TypeDefinitionTexts
 } from "./types.ts";
 
+
+/**
+ * Default objects for headline and text definitions.
+ *
+ * @module
+ */
 export {
   DEFAULT_HEADLINE as headlineDefault,
-  DEFAULT_TEXT as textDefault,
+  DEFAULT_TEXT as textDefault
 } from "./defaults.ts";
+
