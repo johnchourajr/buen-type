@@ -9,6 +9,7 @@
       ".gitignore",
       ".eslintrc.json",
       ".github/**/*",
+      "example/**/*",
       "node_modules/**/*"
     ]
   }
