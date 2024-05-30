@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "GoshaSans-Ultrabold";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/PPGoshaSans-Ultrabold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "GoshaSans-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/PPGoshaSans-Regular.woff2") format("woff2");
+}
