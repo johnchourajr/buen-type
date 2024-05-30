@@ -1,0 +1,4 @@
+[build]
+  base = "example"
+  publish = "example/out" # or "example/.next"
+  command = "npm run build"
