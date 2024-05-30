@@ -9,6 +9,8 @@ type AddUtilities = {
 
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
+ *
+ * @todo Explore making minScreenSize and maxScreenSize configurable in createRemClamp
  */
 export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },

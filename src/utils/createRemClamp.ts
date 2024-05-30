@@ -4,7 +4,8 @@
  * @param minFontSize - The minimum font size in rem
  * @param maxFontSize - The maximum font size in rem
  * @param minScreenSize - The minimum screen size in pixels
- * @param maxScreenSize - The maximum screen size in pixels */
+ * @param maxScreenSize - The maximum screen size in pixels
+ */
 export function createRemClamp(
   minFontSize: number,
   maxFontSize: number,
