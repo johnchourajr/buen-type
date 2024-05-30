@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { buenTypeTailwind } from "../src/index";
 
 const config: Config = {
   content: [
@@ -8,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        bold: ["GoshaSans-Ultrabold", "sans-serif"],
+        sans: ["GoshaSans-Regular", "sans-serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -15,6 +20,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [buenTypeTailwind],
 };
 export default config;
