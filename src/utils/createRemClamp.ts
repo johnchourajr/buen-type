@@ -1,4 +1,5 @@
 /**
+ * A module that provides a function to create a `rem`-based `clamp` function.
  *
  * @param minFontSize - The minimum font size in rem
  * @param maxFontSize - The maximum font size in rem
