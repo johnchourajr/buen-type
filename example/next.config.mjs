@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  destDir: "out",
-};
+const nextConfig = {};
 
 export default nextConfig;
