@@ -1,6 +1,8 @@
+![image](https://github.com/johnchourajr/buen-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
+
 # @buen/type
 
-A utility library for managing typographic scales in Tailwind CSS or React.
+A utility library for managing typographic scales in Tailwind CSS.
 
 **Contents**
 - [@buen/type](#buentype)
@@ -192,3 +194,13 @@ const customTexts = {
   // other text styles
 }
 ```
+
+When using custom styled keys as tailwind classes, they'll be named as `headline-your-key-name`. For example, if your key was `'custom-display'` in the `customHeadlines` object, it would be used as `'headline-custom-display'` class in tailwind.
+
+## Contributing
+
+This project is maintained by John Choura, but it open to contributions from anyone. See [CONTRIBUTORS](https://github.com/johnchourajr/buen-type/blob/main/CONTRIBUTORS.md) for a guide on how to contribute.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/johnchourajr/buen-type/blob/main/LICENSE) file for details.
