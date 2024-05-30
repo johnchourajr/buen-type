@@ -1,7 +1,7 @@
 import { TypeScale } from "@/components/TypeScale";
-import { headlineDefault, textDefault } from "@buen/type";
 import Image from "next/image";
 import Link from "next/link";
+import { headlineDefault, textDefault } from "../../../src/index";
 
 export default function Home() {
   return (

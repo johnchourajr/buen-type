@@ -1,5 +1,5 @@
-import { buenTypeTailwind } from "@buen/type";
 import type { Config } from "tailwindcss";
+import { buenTypeTailwind } from "../src/index";
 
 const config: Config = {
   content: [

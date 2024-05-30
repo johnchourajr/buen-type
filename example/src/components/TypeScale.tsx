@@ -1,5 +1,5 @@
-import { TypeDefinition } from "@buen/type";
 import clsx from "clsx";
+import { TypeDefinition } from "../../../src/index";
 
 export type TypeScaleProps = {
   typeData: Record<string, TypeDefinition>;
