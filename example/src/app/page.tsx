@@ -1,5 +1,5 @@
 import { TypeScale } from "@/components/TypeScale";
-import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "@root/src/defaults";
+import { headlineDefault, textDefault } from "@buen/type";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,8 +26,8 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col items-start justify-between px-10 md:px-24">
-        <TypeScale typeData={DEFAULT_HEADLINE} />
-        <TypeScale typeData={DEFAULT_TEXT} />
+        <TypeScale typeData={headlineDefault} />
+        <TypeScale typeData={textDefault} />
       </section>
     </main>
   );
