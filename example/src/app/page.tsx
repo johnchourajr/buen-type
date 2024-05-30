@@ -1,7 +1,7 @@
 import { TypeScale } from "@/components/TypeScale";
+import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "@root/src/defaults";
 import Image from "next/image";
 import Link from "next/link";
-import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "../../../src/defaults";
 
 export default function Home() {
   return (
