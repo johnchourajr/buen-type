@@ -11,6 +11,8 @@ type AddUtilities = {
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *
  * @todo Explore making minScreenSize and maxScreenSize configurable in createRemClamp
+ * @todo Make addUtilities a named parameter, importing @tailwindcss/types
+ * @todo Make return type more specific to what tailwind plugins expect
  */
 export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },
@@ -34,6 +36,10 @@ export function buenTypeTailwind(
 
     return styles;
   };
+
+  /**
+   * @todo Look into using deepmerge to merge the default and custom definitions
+   */
 
   const mergedHeadlines = {
     ...DEFAULT_HEADLINE,
