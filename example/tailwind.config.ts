@@ -1,5 +1,12 @@
 import type { Config } from "tailwindcss";
+import { PluginAPI } from "tailwindcss/types/config";
 import { buenTypeTailwind } from "../src/index";
+
+function typePlugin({ addUtilities }: PluginAPI) {
+  buenTypeTailwind({ addUtilities }, {
+    disableDefaults: false,
+  });
+};
 
 const config: Config = {
   content: [
@@ -20,6 +27,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [buenTypeTailwind],
+  plugins: [typePlugin],
 };
 export default config;

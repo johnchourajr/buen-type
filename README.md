@@ -14,6 +14,10 @@ A utility library for managing typographic scales in Tailwind CSS.
   - [Type Properties](#type-properties)
     - [Clamp Property](#clamp-property)
   - [Custom Style Keys](#custom-style-keys)
+  - [Custom Aliases for Styles](#custom-aliases-for-styles)
+  - [Disable default type styles](#disable-default-type-styles)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Installation
 
@@ -143,15 +147,27 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 
 ## Type Properties
 
-| Property        | Type               | Description                                                  |
-| --------------- | ------------------ | ------------------------------------------------------------ |
-| `fontFamily`    | `string`           | The font family to be applied.                               |
-| `fontWeight`    | `string \| number` | The weight of the font.                                      |
-| `lineHeight`    | `string \| number` | The height of the line.                                      |
-| `letterSpacing` | `string`           | The spacing between letters.                                 |
-| `textTransform` | `string`           | The transformation applied to the text (e.g., uppercase).    |
-| `fontSize`      | `string`           | The size of the font.                                        |
-| `clamp`         | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
+| Property         | Type               | Description                                                  |
+| ---------------- | ------------------ | ------------------------------------------------------------ |
+| `fontFamily`     | `string`           | The font family to be applied.                               |
+| `fontWeight`     | `string \| number` | The weight of the font.                                      |
+| `lineHeight`     | `string \| number` | The height of the line.                                      |
+| `letterSpacing`  | `string`           | The spacing between letters.                                 |
+| `textTransform`  | `string`           | The transformation applied to the text (e.g., uppercase).    |
+| `fontSize`       | `string`           | The size of the font.                                        |
+| `clamp`          | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
+| `color`          | `string`           | The color of the text.                                       |
+| `fontStyle`      | `string`           | The style of the font (e.g., normal, italic, oblique).       |
+| `textDecoration` | `string`           | Decorations added to the text (e.g., underline).             |
+| `textShadow`     | `string`           | Adds shadow to the text.                                     |
+| `whiteSpace`     | `string`           | Specifies how white space inside an element is handled.      |
+| `wordSpacing`    | `string`           | The spacing between words.                                   |
+| `textOverflow`   | `string`           | How overflowed content is signaled to the user.              |
+| `direction`      | `string`           | Sets the text direction (e.g., ltr, rtl).                    |
+| `writingMode`    | `string`           | Defines the layout of text (horizontal or vertical).         |
+| `textRendering`  | `string`           | Provides rendering hints to the browser.                     |
+| `hyphens`        | `string`           | Specifies how words should be hyphenated.                    |
+
 
 ### Clamp Property
 
@@ -196,6 +212,49 @@ const customTexts = {
 ```
 
 When using custom styled keys as tailwind classes, they'll be named as `headline-your-key-name`. For example, if your key was `'custom-display'` in the `customHeadlines` object, it would be used as `'headline-custom-display'` class in tailwind.
+
+## Custom Aliases for Styles
+
+If you're replaceing an existing style in the defaults, you can add a custom alias for the style. This is done by adding a `classAlias` key to the style object.
+
+```tsx
+// type-config.ts
+
+const customHeadlines = {
+  'display-xl': {
+    fontFamily: 'Arial, sans-serif',
+    classAlias: 'primary-headline',
+  },
+  // other headline styles
+}
+```
+
+## Disable default type styles
+
+To disable the default type styles, set the `disableDefaults` option to `true`.
+
+```tsx
+// tailwind.config.ts
+
+import { buenTypeTailwind } from "@buen/type";
+import { customHeadlines, customTexts } from "./type-config";
+
+function typePlugin({ addUtilities }) {
+  buenTypeTailwind(
+    { addUtilities },
+    {
+      disableDefaults: true,
+    },
+  );
+};
+
+module.exports = {
+  //  ...
+  plugins: [
+    typePlugin
+  ]
+};
+```
 
 ## Contributing
 
