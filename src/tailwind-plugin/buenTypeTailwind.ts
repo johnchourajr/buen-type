@@ -16,7 +16,7 @@ type AddUtilities = {
  */
 export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },
-  customDefinitions?: CustomTypeDefinitions,
+  options?: CustomTypeDefinitions,
 ): void {
   const generateStyles = (definition: TypeDefinition) => {
     let styles: TypeDefinition = {
@@ -26,6 +26,16 @@ export function buenTypeTailwind(
       letterSpacing: definition.letterSpacing,
       textTransform: definition.textTransform,
       fontSize: definition.fontSize,
+      fontStyle: definition.fontStyle,
+      textDecoration: definition.textDecoration,
+      textShadow: definition.textShadow,
+      whiteSpace: definition.whiteSpace,
+      wordSpacing: definition.wordSpacing,
+      textOverflow: definition.textOverflow,
+      direction: definition.direction,
+      writingMode: definition.writingMode,
+      textRendering: definition.textRendering,
+      hyphens: definition.hyphens,
     };
     if (definition.fontSize) {
       styles.fontSize = definition.fontSize;
@@ -41,17 +51,25 @@ export function buenTypeTailwind(
    * @todo Look into using deepmerge to merge the default and custom definitions
    */
 
+  const defaultHeadlines = options?.disableDefaults ? null : DEFAULT_HEADLINE;
   const mergedHeadlines = {
-    ...DEFAULT_HEADLINE,
-    ...customDefinitions?.customHeadlines,
+    ...defaultHeadlines,
+    ...options?.customHeadlines,
   };
-  const mergedTexts = { ...DEFAULT_TEXT, ...customDefinitions?.customTexts };
+
+  const defaultTexts = options?.disableDefaults ? null : DEFAULT_TEXT;
+  const mergedTexts = { ...defaultTexts, ...options?.customTexts };
 
   let headlineUtilities: Record<string, any> = {};
   typedKeys(mergedHeadlines).forEach((key) => {
     const style = mergedHeadlines[key];
     if (style) {
       headlineUtilities[`.headline-${key}`] = generateStyles(style);
+      if (style.classAlias) {
+        style.classAlias.forEach(alias => {
+          headlineUtilities[`.${alias}`] = generateStyles(style);
+        });
+      }
     }
   });
 
@@ -60,6 +78,11 @@ export function buenTypeTailwind(
     const style = mergedTexts[key];
     if (style) {
       textUtilities[`.text-${key}`] = generateStyles(style);
+      if (style.classAlias) {
+        style.classAlias.forEach(alias => {
+          textUtilities[`.text-${alias}`] = generateStyles(style);
+        });
+      }
     }
   });
 

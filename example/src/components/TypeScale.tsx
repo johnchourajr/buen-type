@@ -39,10 +39,10 @@ export function TypeScale({ typeData }: TypeScaleProps) {
   return (
     <>
       {Object.keys(typeData).map((key) => {
-        const { _className } = typeData[key];
+        const { _id } = typeData[key];
 
         function style() {
-          switch (_className) {
+          switch (_id) {
             case "headline-display-xxl":
               return "headline-display-xxl";
             case "headline-display-xl":
@@ -73,7 +73,7 @@ export function TypeScale({ typeData }: TypeScaleProps) {
         return (
           <div key={key} className="mb-10">
             <h2 className={clsx("text-start font-bold", style())}>
-              {sanitizeTitle(_className?.toString() || key)}
+              {sanitizeTitle(_id?.toString() || key)}
             </h2>
             <pre>
               <code className="text-body font-mono">
