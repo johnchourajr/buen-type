@@ -71,7 +71,7 @@ export function TypeScale({ typeData }: TypeScaleProps) {
         }
 
         return (
-          <div key={key} className="mb-10">
+          <div key={key} className="mb-10 col-span-full">
             <h2 className={clsx("text-start font-bold", style())}>
               {sanitizeTitle(_id?.toString() || key)}
             </h2>

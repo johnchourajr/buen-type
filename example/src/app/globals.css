@@ -38,4 +38,13 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .subgrid {
+    @apply grid grid-cols-subgrid;
+  }
+}
+
+.glowing-text {
+  /* @apply text-6xl font-bold bg-clip-text; */
+  backdrop-filter: url(#glow) blur(10px);
 }
