@@ -41,7 +41,14 @@ export function buenTypeTailwind(
       styles.fontSize = definition.fontSize;
     }
     if (definition.clamp) {
-      styles.fontSize = createRemClamp(...definition.clamp);
+      const customMinScreenSize = options?.customMinScreenSize || 1024;
+      const customMaxScreenSize = options?.customMaxScreenSize || 1440;
+      styles.fontSize = createRemClamp(
+        definition.clamp[0],
+        definition.clamp[1],
+        customMinScreenSize,
+        customMaxScreenSize,
+      );
     }
 
     return styles;
@@ -66,7 +73,7 @@ export function buenTypeTailwind(
     if (style) {
       headlineUtilities[`.headline-${key}`] = generateStyles(style);
       if (style.classAlias) {
-        style.classAlias.forEach(alias => {
+        style.classAlias.forEach((alias) => {
           headlineUtilities[`.${alias}`] = generateStyles(style);
         });
       }
@@ -79,7 +86,7 @@ export function buenTypeTailwind(
     if (style) {
       textUtilities[`.text-${key}`] = generateStyles(style);
       if (style.classAlias) {
-        style.classAlias.forEach(alias => {
+        style.classAlias.forEach((alias) => {
           textUtilities[`.text-${alias}`] = generateStyles(style);
         });
       }

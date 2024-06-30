@@ -1,4 +1,3 @@
-
 /**
  * Default headline types, e.g. `display-xxl`, `display-xl`, etc.
  */
@@ -48,32 +47,31 @@ export type DefaultTextTypes =
  * @param hyphens - e.g., none, manual, auto
  */
 export type TypeDefinition = {
-    _id?: string;
+  _id?: string;
   classAlias?: string[] | ["some-class-alias"];
-  fontFamily?: string | "sans-serif" | 'monospace';
-  fontWeight?: string | number | 'normal' | 'bold' | 400 | 700;
-  lineHeight?: string | number | 1.5 | '150%' | '1.5em';
-  letterSpacing?: string | '-0.01em';
-  textTransform?: string | 'uppercase' | 'lowercase' | 'capitalize' | 'none';
-  fontSize?: string | '1.5rem' | '1.5em' | '150%' | '1.5vw';
+  fontFamily?: string | "sans-serif" | "monospace";
+  fontWeight?: string | number | "normal" | "bold" | 400 | 700;
+  lineHeight?: string | number | 1.5 | "150%" | "1.5em";
+  letterSpacing?: string | "-0.01em";
+  textTransform?: string | "uppercase" | "lowercase" | "capitalize" | "none";
+  fontSize?: string | "1.5rem" | "1.5em" | "150%" | "1.5vw";
   clamp?: [number, number];
-  fontStyle?: string | 'normal' | 'italic' | 'oblique';
-  textDecoration?: string | 'underline' | 'overline' | 'line-through' | 'none';
-  textShadow?: string | '1px 1px 2px black';
-  whiteSpace?: string | 'normal' | 'nowrap' | 'pre';
-  wordSpacing?: string | 'normal' | '0.25em';
-  textOverflow?: string | 'clip' | 'ellipsis';
-  direction?: string | 'ltr' | 'rtl';
-  writingMode?: string | 'horizontal-tb' | 'vertical-rl';
-  textRendering?: string | 'auto' | 'optimizeLegibility' | 'geometricPrecision';
-  hyphens?: string | 'none' | 'manual' | 'auto';
+  fontStyle?: string | "normal" | "italic" | "oblique";
+  textDecoration?: string | "underline" | "overline" | "line-through" | "none";
+  textShadow?: string | "1px 1px 2px black";
+  whiteSpace?: string | "normal" | "nowrap" | "pre";
+  wordSpacing?: string | "normal" | "0.25em";
+  textOverflow?: string | "clip" | "ellipsis";
+  direction?: string | "ltr" | "rtl";
+  writingMode?: string | "horizontal-tb" | "vertical-rl";
+  textRendering?: string | "auto" | "optimizeLegibility" | "geometricPrecision";
+  hyphens?: string | "none" | "manual" | "auto";
 };
-
 
 /**
  * CSS output properties, mirrors TypeDefinition excluding clamp and _id
  */
-export type CSSOutput = Omit<TypeDefinition, 'classAlias' | 'clamp'>;
+export type CSSOutput = Omit<TypeDefinition, "classAlias" | "clamp">;
 
 /**
  * Type definitions object
@@ -100,4 +98,6 @@ export type CustomTypeDefinitions = {
   customHeadlines?: Record<string, TypeDefinition>;
   customTexts?: Record<string, TypeDefinition>;
   disableDefaults?: boolean;
+  customMinScreenSize?: number;
+  customMaxScreenSize?: number;
 };

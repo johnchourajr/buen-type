@@ -4,19 +4,40 @@ import clsx from "clsx";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export function Header() {
   const { scrollY } = useScroll();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const path = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 56) {
-      setIsScrolled(true);
+      setScrolled(true);
     } else {
-      setIsScrolled(false);
+      setScrolled(false);
     }
   });
+
+  const parentVariants = {
+    initial: { rowGap: "1rem" },
+    hidden: {
+      rowGap: 0,
+    },
+  };
+
+  const variants = {
+    initial: { opacity: 1, height: "auto" },
+    hidden: {
+      opacity: 0,
+      height: 0,
+    },
+  };
+
+  if (path === "/scale") {
+    return null;
+  }
 
   return (
     <div
@@ -33,11 +54,15 @@ export function Header() {
             "relative pointer-events-auto",
             "before:absolute before:-inset-4 before:content-[''] before:bg-black before:-z-10",
           )}
-          layout
+          initial={"initial"}
+          variants={parentVariants}
+          animate={scrolled ? "hidden" : "initial"}
         >
           <div className="col-span-full flex w-full gap-4 items-center justify-center">
             <div className="flex w-full border-dashed rounded-sm border-[--foreground-rgb] border-0.5 h-9 px-3 justify-start items-center">
-              <pre className="!font-mono text-body">npx jsr add @buen/type</pre>
+              <pre className="!font-mono text-caption">
+                npx jsr add @buen/type
+              </pre>
             </div>
             <Link
               href={"https://jsr.io/@buen/type"}
@@ -61,17 +86,15 @@ export function Header() {
           </div>
           <motion.div
             className="subgrid col-span-full gap-y-3 overflow-hidden"
-            initial={{ opacity: 1, height: "auto" }}
-            animate={{
-              opacity: isScrolled ? 0 : 1,
-              height: isScrolled ? 0 : "auto",
-            }}
+            initial={"initial"}
+            variants={variants}
+            animate={scrolled ? "hidden" : "initial"}
           >
-            <div className="col-span-full border-b-1 pb-3 border-[--foreground-rgb]">
-              <h1 className="uppercase text-body ">@buen/type</h1>
+            <div className="col-span-full border-b-1 pb-3 border-[--color-primary]">
+              <h1 className="uppercase text-string ">@buen/type</h1>
             </div>
             <div className="col-span-full">
-              <p className="text-string max-w-[15em]">
+              <p className="text-body max-w-[15em]">
                 A Tailwind CSS Plugin for creating and managing good typography
                 systems
               </p>

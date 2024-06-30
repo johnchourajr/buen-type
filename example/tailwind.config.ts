@@ -1,12 +1,15 @@
 import type { Config } from "tailwindcss";
 import { PluginAPI } from "tailwindcss/types/config";
 import { buenTypeTailwind } from "../src/index";
+import { customTexts } from "./src/config/type";
 
 function typePlugin({ addUtilities }: PluginAPI) {
   buenTypeTailwind(
     { addUtilities },
     {
+      customTexts,
       disableDefaults: false,
+      customMinScreenSize: 480,
     },
   );
 }
@@ -25,8 +28,15 @@ const config: Config = {
       "2": "2px",
       "3": "3px",
     },
+    color: {
+      foreground: "#00ff0a",
+      background: "#000000",
+    },
     extend: {
       spacing: {
+        "0.05em": "0.05em",
+        "0.1em": "0.1em",
+        "0.15em": "0.15em",
         "0.25em": "0.25em",
         "0.5em": "0.5em",
         "1em": "1em",
@@ -54,4 +64,5 @@ const config: Config = {
   },
   plugins: [typePlugin],
 };
+
 export default config;

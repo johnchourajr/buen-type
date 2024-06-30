@@ -1,7 +1,6 @@
-import SvgHeader from "@/components/SvgHeader";
-import { TypeScale } from "@/components/TypeScale";
+import { IframeWrapper } from "@/components/IframeWrapper";
+import { SvgHeader } from "@/components/SvgHeader";
 import clsx from "clsx";
-import { headlineDefault, textDefault } from "../../../src/index";
 
 export default function Home() {
   return (
@@ -12,12 +11,15 @@ export default function Home() {
         "px-4",
       )}
     >
-      <div className="col-span-full h-[42.98611111vw] ">
+      <section className="col-span-full h-[43vw] ">
         <SvgHeader className="w-[calc(100%+32px)] -mx-4 -mt-0.25em" />
-      </div>
-      <section className="subgrid col-span-full items-start justify-between ">
-        <TypeScale typeData={headlineDefault} />
-        <TypeScale typeData={textDefault} />
+      </section>
+      <section className="border-t-2 border-[--color-primary] col-span-full pt-2 mt-2">
+        <h2 className="text-string whitespace-pre">Fluid Typography is Buen</h2>
+        <IframeWrapper
+          src="/scale"
+          className="w-full col-span-full min-h-[50vw] my-6"
+        />
       </section>
     </main>
   );

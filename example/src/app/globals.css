@@ -19,19 +19,17 @@
 }
 
 :root {
-  --foreground-rgb: 0, 255, 10;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --color-primary: 0, 255, 10;
+  --color-primary-hex: #00ff0a;
+  --color-secondary: 0, 0, 0;
+  --color-secondary-hex: #000000;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--color-primary));
+  background: rgb(var(--color-secondary));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
