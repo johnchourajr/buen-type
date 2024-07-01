@@ -25,7 +25,25 @@ const panelContent = [
   },
   {
     title: "tailwind-config.ts",
-    content: ``,
+    content: `
+  import type { Config } from "tailwindcss";
+  import { PluginAPI } from "tailwindcss/types/config";
+  import { buenTypeTailwind } from "@buen-type";
+
+  function typePlugin({ addUtilities }: PluginAPI) {
+    buenTypeTailwind(
+      { addUtilities },
+      {
+        customMinScreenSize: 480,
+      },
+    );
+  }
+
+  export default const config: Config = {
+    ...
+    plugins: [typePlugin],
+  };
+    `,
   },
 ];
 
