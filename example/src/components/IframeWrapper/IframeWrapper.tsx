@@ -17,6 +17,7 @@ function IframeWrapper({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const isResizing = useRef(false);
+  const initialWidth = useRef(0);
 
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -62,6 +63,13 @@ function IframeWrapper({
     }
   }, [handleMouseMove, handleMouseUp]);
 
+  const handleDoubleClick = useCallback(() => {
+    if (wrapperRef.current) {
+      wrapperRef.current.style.width = `${initialWidth.current}px`;
+      setIframeWidth(initialWidth.current);
+    }
+  }, []);
+
   const handleResize = useCallback((event: MessageEvent) => {
     if (event.origin !== window.location.origin) return;
     if (event.data.iframeHeight && iframeRef.current) {
@@ -70,6 +78,9 @@ function IframeWrapper({
   }, []);
 
   useEffect(() => {
+    initialWidth.current = wrapperRef.current?.offsetWidth || 0;
+    setIframeWidth(initialWidth.current);
+
     window.addEventListener("message", handleResize);
     return () => {
       window.removeEventListener("message", handleResize);
@@ -87,7 +98,7 @@ function IframeWrapper({
   return (
     <div
       ref={wrapperRef}
-      className={clsx("relative max-w-full w-[80%] flex", className)}
+      className={clsx("relative max-w-full w-[66%] flex", className)}
     >
       <iframe
         ref={iframeRef}
@@ -105,6 +116,7 @@ function IframeWrapper({
       <div
         className={clsx(styles.resizer)}
         onMouseDown={startResize}
+        onDoubleClick={handleDoubleClick}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       />

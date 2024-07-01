@@ -42,7 +42,7 @@ export function Header() {
   return (
     <div
       className={clsx(
-        "w-full fixed top-0 ",
+        "w-full fixed top-0 z-50",
         "grid grid-cols-4 md:grid-cols-6 gap-x-4",
         "px-4 pointer-events-none",
       )}
