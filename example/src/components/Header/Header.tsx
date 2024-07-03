@@ -6,10 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { HeaderCopyButton } from "./HeaderCopyButton";
 
 export function Header() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+
   const path = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -52,18 +54,14 @@ export function Header() {
           className={clsx(
             "subgrid col-start-1 col-span-full md:col-start-5 gap-y-4",
             "relative pointer-events-auto",
-            "before:absolute before:-inset-4 before:content-[''] before:bg-black before:-z-10",
+            "before:absolute before:-inset-4 before:content-[''] before:bg-black before:-z-10 before:rounded-bl-md",
           )}
           initial={"initial"}
           variants={parentVariants}
           animate={scrolled ? "hidden" : "initial"}
         >
           <div className="col-span-full flex w-full gap-4 items-center justify-center">
-            <div className="flex w-full border-dashed rounded-sm border-[--foreground-rgb] border-0.5 h-9 px-3 justify-start items-center">
-              <pre className="!font-mono text-caption">
-                npx jsr add @buen/type
-              </pre>
-            </div>
+            <HeaderCopyButton text={"npx jsr add @buen/type"} />
             <Link
               href={"https://jsr.io/@buen/type"}
               className="uppercase text-body"

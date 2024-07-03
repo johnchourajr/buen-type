@@ -96,10 +96,7 @@ function IframeWrapper({
   }, [handleMouseMove, handleMouseUp]);
 
   return (
-    <div
-      ref={wrapperRef}
-      className={clsx("relative max-w-full w-[66%] flex", className)}
-    >
+    <div ref={wrapperRef} className={clsx("relative flex", className)}>
       <iframe
         ref={iframeRef}
         src={src}
@@ -111,7 +108,7 @@ function IframeWrapper({
       />
       <AnimatePresence>
         {isDragging && <IframeTag>{iframeWidth}px</IframeTag>}
-        {isHovering && !isDragging && <IframeTag>Drag</IframeTag>}
+        {isHovering && !isDragging && <IframeTag>drag</IframeTag>}
       </AnimatePresence>
       <div
         className={clsx(styles.resizer)}

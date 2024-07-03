@@ -2,58 +2,15 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-
-const panelContent = [
-  {
-    title: "index.ts",
-    content: `
-  function App() {
-    return(
-      <main>
-        <div>
-          <p class="headline-display-xxl">Display XXL</p>
-          <p class="headline-display-xl">Display XL</p>
-          <p class="headline-display-lg">Display LG</p>
-          <p class="headline-display-md">Display MD</p>
-          <p class="headline-display-sm">Display SM</p>
-          <p class="headline-display-xs">Display XS</p>
-        </div>
-      </main>
-    );
-  }
-    `,
-  },
-  {
-    title: "tailwind-config.ts",
-    content: `
-  import type { Config } from "tailwindcss";
-  import { PluginAPI } from "tailwindcss/types/config";
-  import { buenTypeTailwind } from "@buen-type";
-
-  function typePlugin({ addUtilities }: PluginAPI) {
-    buenTypeTailwind(
-      { addUtilities },
-      {
-        customMinScreenSize: 480,
-      },
-    );
-  }
-
-  export default const config: Config = {
-    ...
-    plugins: [typePlugin],
-  };
-    `,
-  },
-];
+import { panelContent } from "./PanelCode.content";
 
 export function PanelCode() {
   const [activeTab, setActiveTab] = useState(0);
   const activeContent = panelContent[activeTab].content;
 
   return (
-    <div className="w-[33%] border-2 border-[--color-primary] rounded-2xl h-full absolute right-0 top-0 z-0">
-      <div className="flex flex-row items-start justify-start border-b-2 border-[--color-primary]">
+    <div className="md:w-[33%] w-full mt-8 md:mt-0 border-2 border-[--color-primary] rounded-2xl md:h-full md:absolute right-0 top-0 z-0 overflow-hidden col-span-full">
+      <div className="flex flex-row items-start w-full overflow-scroll justify-start border-b-2 border-[--color-primary]">
         {panelContent.map((tab, index) => (
           <button
             key={tab.title}
@@ -63,7 +20,10 @@ export function PanelCode() {
             onClick={() => setActiveTab(index)}
           >
             <p
-              className={clsx(activeTab === index ? "opacity-1" : "opacity-45")}
+              className={clsx(
+                "whitespace-pre",
+                activeTab === index ? "opacity-1" : "opacity-45",
+              )}
             >
               {tab.title}
             </p>
