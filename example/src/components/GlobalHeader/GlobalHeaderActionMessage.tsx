@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export function HeaderActionMessage({ text }: { text: string }) {
+export function GlobalHeaderActionMessage({ text }: { text: string }) {
   const animationProps = {
     initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },

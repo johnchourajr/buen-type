@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { HeaderCopyButton } from "./HeaderCopyButton";
+import { HeaderCopyButton } from "./GlobalHeaderCopyButton";
 
-export function Header() {
+export function GlobalHeader() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
 

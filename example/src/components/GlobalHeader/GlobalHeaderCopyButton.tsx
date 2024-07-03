@@ -2,9 +2,9 @@
 import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { HeaderActionMessage } from "./HeaderActionMessage";
+import { GlobalHeaderActionMessage } from "./GlobalHeaderActionMessage";
 
-export function HeaderCopyButton({ text }: { text: string }) {
+export function GlobalHeaderCopyButton({ text }: { text: string }) {
   const [isHovering, setIsHovering] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -36,8 +36,8 @@ export function HeaderCopyButton({ text }: { text: string }) {
     >
       <pre className="!font-mono text-caption select-text">{text}</pre>
       <AnimatePresence>
-        {isHovering && !isCopied && <HeaderActionMessage text="copy" />}
-        {isCopied && <HeaderActionMessage text="copied" />}
+        {isHovering && !isCopied && <GlobalHeaderActionMessage text="copy" />}
+        {isCopied && <GlobalHeaderActionMessage text="copied" />}
       </AnimatePresence>
     </button>
   );

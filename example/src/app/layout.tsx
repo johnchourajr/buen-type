@@ -1,5 +1,5 @@
 import { GlobalFooter } from "@/components/GlobalFooter";
-import { Header } from "@/components/Header";
+import { GlobalHeader } from "@/components/GlobalHeader";
 import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans">
-        <Header />
+        <GlobalHeader />
         {children}
         <GlobalFooter />
       </body>
