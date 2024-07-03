@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { HeaderCopyButton } from "./GlobalHeaderCopyButton";
+import { GlobalHeaderCopyButton } from "./GlobalHeaderCopyButton";
 
 export function GlobalHeader() {
   const { scrollY } = useScroll();
@@ -61,7 +61,7 @@ export function GlobalHeader() {
           animate={scrolled ? "hidden" : "initial"}
         >
           <div className="col-span-full flex w-full gap-4 items-center justify-center">
-            <HeaderCopyButton text={"npx jsr add @buen/type"} />
+            <GlobalHeaderCopyButton text={"npx jsr add @buen/type"} />
             <Link
               href={"https://jsr.io/@buen/type"}
               className="uppercase text-body"
