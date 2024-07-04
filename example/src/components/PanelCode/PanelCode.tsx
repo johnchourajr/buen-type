@@ -67,7 +67,7 @@ export function PanelCode({ className, panelContent }: PanelCodeProps) {
             onMouseLeave={() => !isCopied && setIsHovering(false)}
             className={clsx("px-4 py-3 h-full")}
           >
-            copy
+            {isCopied ? "copied" : "copy"}
           </button>
         </div>
       </div>
