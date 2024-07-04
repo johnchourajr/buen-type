@@ -1,34 +1,75 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
-import { panelContent } from "./PanelCode.content";
+import { useEffect, useState } from "react";
+import { PanelProps } from "./PanelCode.types";
 
-export function PanelCode() {
+type PanelCodeProps = {
+  className?: string;
+  panelContent?: PanelProps[];
+};
+
+export function PanelCode({ className, panelContent }: PanelCodeProps) {
   const [activeTab, setActiveTab] = useState(0);
-  const activeContent = panelContent[activeTab].content;
+  const [isHovering, setIsHovering] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const activeContent = panelContent ? panelContent[activeTab].content : "";
+
+  useEffect(() => {
+    if (isCopied) {
+      const timeout = setTimeout(() => {
+        setIsCopied(false);
+        setIsHovering(false);
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isCopied]);
+
+  const copyText = (string: string) => {
+    navigator.clipboard.writeText(string);
+    setIsCopied(true);
+  };
 
   return (
-    <div className="md:w-[33%] w-full mt-8 md:mt-0 border-2 border-[--color-primary] rounded-2xl md:h-full md:absolute right-0 top-0 z-0 overflow-hidden col-span-full">
-      <div className="flex flex-row items-start w-full overflow-scroll justify-start border-b-2 border-[--color-primary]">
-        {panelContent.map((tab, index) => (
-          <button
-            key={tab.title}
-            className={clsx(
-              "px-4 py-3 border-r-2 border-[--color-primary] h-full",
-            )}
-            onClick={() => setActiveTab(index)}
-          >
-            <p
+    <div
+      className={clsx(
+        "@container",
+        "w-full mt-8 md:mt-0 border-2 border-[--color-primary] rounded-2xl md:h-full right-0 top-0 z-0 overflow-hidden col-span-full",
+        className,
+      )}
+    >
+      <div className="relative flex flex-row items-start w-full overflow-scroll justify-start border-b-2 border-[--color-primary]">
+        {panelContent &&
+          panelContent.map((tab, index) => (
+            <button
+              key={tab.title}
               className={clsx(
-                "whitespace-pre",
-                activeTab === index ? "opacity-1" : "opacity-45",
+                "px-4 py-3 border-r-2 border-[--color-primary] h-full",
               )}
+              onClick={() => setActiveTab(index)}
             >
-              {tab.title}
-            </p>
+              <p
+                className={clsx(
+                  "whitespace-pre",
+                  activeTab === index ? "opacity-1" : "opacity-45",
+                )}
+              >
+                {tab.title}
+              </p>
+            </button>
+          ))}
+        <div className="hidden justify-end w-full h-full grow @[21rem]:flex">
+          <button
+            onClick={() => copyText(activeContent)}
+            onMouseEnter={() => !isCopied && setIsHovering(true)}
+            onMouseLeave={() => !isCopied && setIsHovering(false)}
+            className={clsx("px-4 py-3 h-full")}
+          >
+            copy
           </button>
-        ))}
+        </div>
       </div>
       <div className="px-4 py-3 h-full overflow-scroll">
         <pre>{activeContent}</pre>

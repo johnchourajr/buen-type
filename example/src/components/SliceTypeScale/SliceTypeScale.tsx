@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { IframeWrapper } from "../IframeWrapper";
 import { PanelCode } from "../PanelCode";
 import { SliceWrapper } from "../SliceWrapper";
+import { slicePanelContent } from "./SliceTypeScale.content";
 
 export function SliceTypeScale() {
   return (
@@ -14,7 +15,10 @@ export function SliceTypeScale() {
           "after:content-[''] after:absolute after:w-[10%] after:bg-gradient-to-r after:from-black after:to-transparent after:right-[-10%] after:top-0 after:h-full after:z-10 after:pointer-events-none",
         )}
       />
-      <PanelCode />
+      <PanelCode
+        panelContent={slicePanelContent}
+        className="md:w-[33%] md:absolute"
+      />
     </SliceWrapper>
   );
 }

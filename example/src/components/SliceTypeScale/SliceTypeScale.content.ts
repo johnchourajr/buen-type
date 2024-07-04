@@ -1,5 +1,6 @@
-"use client";
-export const panelContent = [
+import { PanelProps } from "../PanelCode/PanelCode.types";
+
+export const slicePanelContent: PanelProps[] = [
   {
     title: "index.ts",
     content: `
