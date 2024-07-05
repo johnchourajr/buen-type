@@ -8,6 +8,16 @@ export const metadata: Metadata = {
   title: "Buen Type",
   description:
     "A Tailwind CSS Plugin for creating and managing good typography systems",
+  openGraph: {
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Buen Type",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
