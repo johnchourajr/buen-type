@@ -54,7 +54,7 @@ export const sliceInstallCustom: PanelProps[] = [
       classAlias: 'article-body',
       fontFamily: "'Inter', 'sans-serif'",
       fontWeight: 'normal',
-      fontSize: '1.1rem'
+      fontSize: '1.1rem',
       letterSpacing: '0em',
       lineHeight: 1.5,
       textTransform: 'none',
