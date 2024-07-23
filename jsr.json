@@ -1,6 +1,6 @@
 {
   "name": "@buen/type",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "exports": "./src/index.ts",
   "publish": {
     "include": ["src/**/*.ts", "src/defaults.ts", "src/types.ts", "README.md"],
