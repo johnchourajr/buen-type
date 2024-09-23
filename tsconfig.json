@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ES6",
+    "module": "ESNext",
+    "outDir": "dist",
     "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "allowImportingTsExtensions": true,
+    "declaration": true, // Generate .d.ts files for TypeScript types
+    "sourceMap": true,   // Generate source maps
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "outDir": "./dist",
-    "rootDir": "./src"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

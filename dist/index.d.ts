@@ -37,7 +37,7 @@
  *
  * ```tsx
  * // tailwind.config.ts
- * import { buenTypeTailwind } from "@muybuen/type";
+ * import { buenTypeTailwind } from "@buen/type";
  * import { customHeadlines, customTexts } from "./type-config";
  *
  * function typePlugin({ addUtilities }) {
@@ -58,13 +58,12 @@
  * @module
  */
 export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
-
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
  *
  * @example
  * ```ts
- * import { createRemClamp } from "@muybuen/type";
+ * import { createRemClamp } from "@buen/type";
  *
  * createRemClamp(1, 2, 1024, 1440); // "clamp(1rem, 1rem + 0.06666666666666667vw, 2rem)"
  * ```
@@ -72,25 +71,15 @@ export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
  * @module
  */
 export { createRemClamp } from "./utils/createRemClamp.ts";
-
 /**
  * Types for the Buen Type module, for use when implementing custom type definitions.
  *
  * @module
  */
-export type {
-  CustomTypeDefinitions,
-  TypeDefinition,
-  TypeDefinitionHeadlines,
-  TypeDefinitionTexts,
-} from "./types.ts";
-
+export type { CustomTypeDefinitions, TypeDefinition, TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types.ts";
 /**
  * Default objects for headline and text definitions.
  *
  * @module
  */
-export {
-  DEFAULT_HEADLINE as headlineDefault,
-  DEFAULT_TEXT as textDefault,
-} from "./defaults.ts";
+export { DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault } from "./defaults.ts";

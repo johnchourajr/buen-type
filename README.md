@@ -1,12 +1,14 @@
 ![image](https://github.com/johnchourajr/buen-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
 
-# @buen/type
+# @muybuen/type
 
 A utility library for managing typographic scales in Tailwind CSS.
 
 **Contents**
-- [@buen/type](#buentype)
+- [@muybuen/type](#muybuentype)
   - [Installation](#installation)
+    - [With NPM](#with-npm)
+    - [With JSR](#with-jsr)
   - [Usage](#usage)
     - [Add Plugin](#add-plugin)
     - [Custom Type](#custom-type)
@@ -21,24 +23,35 @@ A utility library for managing typographic scales in Tailwind CSS.
 
 ## Installation
 
+### With NPM
+
+```bash
+# NPM package with NPM
+npm install @muybuen/type
+
+# -or- NPM package with Yarn
+yarn add @muybuen/type
+
+# -or- NPM package with PNPM
+pnpm add @muybuen/type
+```
+
+
+### With JSR
+
 **NPM**
 ```bash
-npx jsr add @buen/type
-```
+# JSR package with NPM
+npx jsr add @muybuen/type
 
-**Deno**
-```bash
-deno add @buen/type
-```
+# -or- JSR package with Demo
+deno add @muybuen/type
 
-**Yarn**
-```bash
-yarn dlx jsr add @buen/type
-```
+# -or- JSR package with Yarn
+yarn dlx jsr add @muybuen/type
 
-**PNPM**
-```bash
-pnpm dlx jsr add @buen/type
+# -or- JSR package with PNPM
+pnpm dlx jsr add @muybuen/type
 ```
 
 ## Usage
@@ -48,7 +61,7 @@ pnpm dlx jsr add @buen/type
 ```tsx
 // tailwind.config.js
 
-import { buenTypeTailwind } from "@buen/type";
+import { buenTypeTailwind } from "@muybuen/type";
 
 module.exports = {
   //  ...
@@ -95,7 +108,7 @@ const customTexts = {
 ```tsx
 // tailwind.config.ts
 
-import { buenTypeTailwind } from "@buen/type";
+import { buenTypeTailwind } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {
@@ -236,7 +249,7 @@ To disable the default type styles, set the `disableDefaults` option to `true`.
 ```tsx
 // tailwind.config.ts
 
-import { buenTypeTailwind } from "@buen/type";
+import { buenTypeTailwind } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {

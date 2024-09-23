@@ -1,6 +1,6 @@
 {
-  "name": "@buen/type",
-  "version": "1.1.1",
+  "name": "@muybuen/type",
+  "version": "1.1.2",
   "exports": "./src/index.ts",
   "publish": {
     "include": ["src/**/*.ts", "src/defaults.ts", "src/types.ts", "README.md"],
@@ -10,6 +10,7 @@
       ".eslintrc.json",
       ".github/**/*",
       "example/**/*",
+      "dist/**/*",
       "node_modules/**/*"
     ]
   }

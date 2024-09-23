@@ -61,9 +61,16 @@ export function GlobalHeader() {
           animate={scrolled ? "hidden" : "initial"}
         >
           <div className="col-span-full flex w-full gap-4 items-center justify-center">
-            <GlobalHeaderCopyButton text={"npx jsr add @buen/type"} />
+            <GlobalHeaderCopyButton text={"npm i @muybuen/type"} />
             <Link
-              href={"https://jsr.io/@buen/type"}
+              href={"https://www.npmjs.com/package/@muybuen/type"}
+              className="uppercase text-body"
+              target="_blank"
+            >
+              <Image src={"/npm.svg"} width={30} height={16} alt={"npm"} />
+            </Link>
+            <Link
+              href={"https://jsr.io/@muybuen/type"}
               className="uppercase text-body"
               target="_blank"
             >
@@ -89,7 +96,7 @@ export function GlobalHeader() {
             animate={scrolled ? "hidden" : "initial"}
           >
             <div className="col-span-full border-b-1 pb-3 border-[--color-primary]">
-              <h1 className="uppercase text-string ">@buen/type</h1>
+              <h1 className="uppercase text-string ">@muybuen/type</h1>
             </div>
             <div className="col-span-full">
               <p className="text-body max-w-[15em]">

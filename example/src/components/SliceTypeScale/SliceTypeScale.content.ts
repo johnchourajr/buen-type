@@ -25,7 +25,7 @@ export const slicePanelContent: PanelProps[] = [
     content: `
   import type { Config } from "tailwindcss";
   import { PluginAPI } from "tailwindcss/types/config";
-  import { buenTypeTailwind } from "@buen-type";
+  import { buenTypeTailwind } from "@muybuen-type";
 
   function typePlugin({ addUtilities }: PluginAPI) {
     buenTypeTailwind(
