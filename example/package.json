@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@buen/type": "npm:@jsr/buen__type@^1.0.10",
+    "@muybuen/type": "^1.1.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
