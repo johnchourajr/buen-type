@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
     "target": "ES6",
     "module": "ESNext",
-    "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
     "declaration": true, // Generate .d.ts files for TypeScript types
     "sourceMap": true,   // Generate source maps
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "noEmit": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

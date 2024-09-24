@@ -1,10 +1,7 @@
 {
   "extends": "eslint:recommended",
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
   "rules": {
     "semi": ["error", "always"],
-    "no-undef": "off",
     "react/react-in-jsx-scope": "off"
   }
 }

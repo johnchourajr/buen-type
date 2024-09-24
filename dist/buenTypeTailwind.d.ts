@@ -1,4 +1,4 @@
-import { CustomTypeDefinitions } from "../types.ts";
+import { CustomTypeDefinitions } from "./types";
 type AddUtilities = {
     (utilities: Record<string, any>, options?: any): void;
 };

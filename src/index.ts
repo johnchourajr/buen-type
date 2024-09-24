@@ -57,7 +57,7 @@
  *
  * @module
  */
-export { buenTypeTailwind } from "./buenTypeTailwind.ts";
+export { buenTypeTailwind } from "./buenTypeTailwind";
 
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
@@ -71,7 +71,7 @@ export { buenTypeTailwind } from "./buenTypeTailwind.ts";
  *
  * @module
  */
-export { createRemClamp } from "./utils/createRemClamp.ts";
+export { createRemClamp } from "./utils/createRemClamp";
 
 /**
  * Types for the Buen Type module, for use when implementing custom type definitions.
@@ -93,4 +93,4 @@ export type {
 export {
   DEFAULT_HEADLINE as headlineDefault,
   DEFAULT_TEXT as textDefault,
-} from "./defaults.ts";
+} from "./defaults";

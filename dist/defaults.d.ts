@@ -1,4 +1,4 @@
-import { TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types.ts";
+import { TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types";
 /**
  * Default headline object
  */

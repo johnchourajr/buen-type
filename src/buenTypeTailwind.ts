@@ -1,7 +1,7 @@
-import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "./defaults.ts";
-import { CustomTypeDefinitions, TypeDefinition } from "./types.ts";
-import { createRemClamp } from "./utils/createRemClamp.ts";
-import { typedKeys } from "./utils/typedKeys.ts";
+import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "./defaults";
+import { CustomTypeDefinitions, TypeDefinition } from "./types";
+import { createRemClamp } from "./utils/createRemClamp";
+import { typedKeys } from "./utils/typedKeys";
 
 type AddUtilities = {
   (utilities: Record<string, any>, options?: any): void;
@@ -16,7 +16,7 @@ type AddUtilities = {
  */
 export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },
-  options?: CustomTypeDefinitions
+  options?: CustomTypeDefinitions,
 ): void {
   const generateStyles = (definition: TypeDefinition) => {
     let styles: TypeDefinition = {
@@ -47,7 +47,7 @@ export function buenTypeTailwind(
         definition.clamp[0],
         definition.clamp[1],
         customMinScreenSize,
-        customMaxScreenSize
+        customMaxScreenSize,
       );
     }
 

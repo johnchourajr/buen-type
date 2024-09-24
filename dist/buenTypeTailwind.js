@@ -1,6 +1,6 @@
-import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "../defaults.ts";
-import { createRemClamp } from "../utils/createRemClamp.ts";
-import { typedKeys } from "../utils/typedKeys.ts";
+import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "./defaults";
+import { createRemClamp } from "./utils/createRemClamp";
+import { typedKeys } from "./utils/typedKeys";
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *

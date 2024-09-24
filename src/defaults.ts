@@ -1,4 +1,4 @@
-import { TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types.ts";
+import { TypeDefinitionHeadlines, TypeDefinitionTexts } from "./types";
 
 /**
  * Default headline object
@@ -43,7 +43,7 @@ export const DEFAULT_HEADLINE: TypeDefinitionHeadlines = {
     fontWeight: "bold",
     clamp: [1, 1],
     letterSpacing: "-0em",
-    lineHeight: 1
+    lineHeight: 1,
   },
 };
 

@@ -41,7 +41,7 @@ export const DEFAULT_HEADLINE = {
         fontWeight: "bold",
         clamp: [1, 1],
         letterSpacing: "-0em",
-        lineHeight: 1
+        lineHeight: 1,
     },
 };
 /**
