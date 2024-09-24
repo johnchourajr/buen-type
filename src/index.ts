@@ -57,7 +57,7 @@
  *
  * @module
  */
-export { buenTypeTailwind } from "./tailwind-plugin/buenTypeTailwind.ts";
+export { buenTypeTailwind } from "./buenTypeTailwind.ts";
 
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
