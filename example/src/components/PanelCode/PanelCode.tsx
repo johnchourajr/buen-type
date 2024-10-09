@@ -65,7 +65,10 @@ export function PanelCode({ className, panelContent }: PanelCodeProps) {
             onClick={() => copyText(activeContent)}
             onMouseEnter={() => !isCopied && setIsHovering(true)}
             onMouseLeave={() => !isCopied && setIsHovering(false)}
-            className={clsx("px-4 py-3 h-full")}
+            className={clsx(
+              "px-4 py-3 h-full",
+              isHovering ? "opacity-50" : "opacity-100",
+            )}
           >
             {isCopied ? "copied" : "copy"}
           </button>
