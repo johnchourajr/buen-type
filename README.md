@@ -1,6 +1,16 @@
+# @muybuen/type
+
 ![image](https://github.com/johnchourajr/buen-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
 
-# @muybuen/type
+[![npm version](https://badge.fury.io/js/%40muybuen%2Ftype.svg)](https://badge.fury.io/js/%40muybuen%2Ftype)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm downloads](https://img.shields.io/npm/dm/@muybuen/type.svg)](https://www.npmjs.com/package/@muybuen/type)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/johnchourajr/type/graphs/commit-activity)
+
+
+----
 
 A utility library for managing typographic scales in Tailwind CSS.
 
