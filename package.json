@@ -1,33 +1,51 @@
 {
   "name": "@muybuen/type",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "author": "John Choura",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "lint": "prettier --write .",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "prettier": "^3.2.5",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "typography",
+    "tailwindcss",
+    "tailwind",
+    "react",
+    "css"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johnchourajr/buen-type.git"
-  },
-  "bugs": {
-    "url": "https://github.com/johnchourajr/buen-type/issues"
-  },
-  "homepage": "https://github.com/johnchourajr/buen-type#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "check-types": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "eslint": "^9.3.0",
-    "js-tokens": "^4.0.0",
-    "loose-envify": "^1.4.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
   }
 }
