@@ -1,11 +1,11 @@
 /**
  * Default headline types, e.g. `display-xxl`, `display-xl`, etc.
  */
-export type DefaultHeadlineTypes = "display-xxl" | "display-xl" | "display-lg" | "display-md" | "display-sm" | "display-xs";
+type DefaultHeadlineTypes = "display-xxl" | "display-xl" | "display-lg" | "display-md" | "display-sm" | "display-xs";
 /**
  * Default text types, e.g. `title`, `paragraph`, etc.
  */
-export type DefaultTextTypes = "title" | "paragraph" | "string" | "body" | "caption";
+type DefaultTextTypes = "title" | "paragraph" | "string" | "body" | "caption";
 /**
  * Type definition properties
  *
@@ -33,7 +33,7 @@ export type DefaultTextTypes = "title" | "paragraph" | "string" | "body" | "capt
  * @param textRendering - e.g., auto, optimizeLegibility, geometricPrecision
  * @param hyphens - e.g., none, manual, auto
  */
-export type TypeDefinition = {
+type TypeDefinition = {
     _id?: string;
     classAlias?: string[] | ["some-class-alias"];
     fontFamily?: string | "sans-serif" | "monospace";
@@ -55,28 +55,55 @@ export type TypeDefinition = {
     hyphens?: string | "none" | "manual" | "auto";
 };
 /**
- * CSS output properties, mirrors TypeDefinition excluding clamp and _id
- */
-export type CSSOutput = Omit<TypeDefinition, "classAlias" | "clamp">;
-/**
- * Type definitions object
- */
-export type TypeDefinitions = Record<string, TypeDefinition>;
-/**
  * Default type definitions for headlines
  */
-export type TypeDefinitionHeadlines = Record<DefaultHeadlineTypes, TypeDefinition>;
+type TypeDefinitionHeadlines = Record<DefaultHeadlineTypes, TypeDefinition>;
 /**
  * Default type definitions for text elements
  */
-export type TypeDefinitionTexts = Record<DefaultTextTypes, TypeDefinition>;
+type TypeDefinitionTexts = Record<DefaultTextTypes, TypeDefinition>;
 /**
  * Custom type definitions for headlines and texts.
  */
-export type CustomTypeDefinitions = {
+type CustomTypeDefinitions = {
     customHeadlines?: Record<string, TypeDefinition>;
     customTexts?: Record<string, TypeDefinition>;
     disableDefaults?: boolean;
     customMinScreenSize?: number;
     customMaxScreenSize?: number;
 };
+
+type AddUtilities = {
+    (utilities: Record<string, any>, options?: any): void;
+};
+/**
+ * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
+ *
+ * @todo Explore making minScreenSize and maxScreenSize configurable in createRemClamp
+ * @todo Make addUtilities a named parameter, importing @tailwindcss/types
+ * @todo Make return type more specific to what tailwind plugins expect
+ */
+declare function buenTypeTailwind({ addUtilities }: {
+    addUtilities: AddUtilities;
+}, options?: CustomTypeDefinitions): void;
+
+/**
+ * A module that provides a function to create a `rem`-based `clamp` function.
+ *
+ * @param minFontSize - The minimum font size in rem
+ * @param maxFontSize - The maximum font size in rem
+ * @param minScreenSize - The minimum screen size in pixels
+ * @param maxScreenSize - The maximum screen size in pixels
+ */
+declare function createRemClamp(minFontSize: number, maxFontSize: number, minScreenSize?: number, maxScreenSize?: number): string;
+
+/**
+ * Default headline object
+ */
+declare const DEFAULT_HEADLINE: TypeDefinitionHeadlines;
+/**
+ * Default text object
+ */
+declare const DEFAULT_TEXT: TypeDefinitionTexts;
+
+export { type CustomTypeDefinitions, type TypeDefinition, type TypeDefinitionHeadlines, type TypeDefinitionTexts, buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
