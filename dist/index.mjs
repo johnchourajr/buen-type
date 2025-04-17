@@ -112,45 +112,103 @@ function typedKeys(obj) {
 }
 
 // src/buenTypeTailwind.ts
-function buenTypeTailwind({ addUtilities }, options) {
+function buenTypeTailwind(api, options) {
+  const { addUtilities, utility, addComponents, theme, matchUtility } = api;
+  const isV4 = typeof utility === "function" && typeof addComponents === "function";
   const generateStyles = (definition) => {
-    let styles = {
-      fontFamily: definition.fontFamily,
-      fontWeight: definition.fontWeight,
-      lineHeight: definition.lineHeight,
-      letterSpacing: definition.letterSpacing,
-      textTransform: definition.textTransform,
-      fontSize: definition.fontSize,
-      fontStyle: definition.fontStyle,
-      textDecoration: definition.textDecoration,
-      textShadow: definition.textShadow,
-      whiteSpace: definition.whiteSpace,
-      wordSpacing: definition.wordSpacing,
-      textOverflow: definition.textOverflow,
-      direction: definition.direction,
-      writingMode: definition.writingMode,
-      textRendering: definition.textRendering,
-      hyphens: definition.hyphens
-    };
-    if (definition.fontSize) {
-      styles.fontSize = definition.fontSize;
+    if (isV4) {
+      let styles = {
+        "--font-family": definition.fontFamily,
+        "--font-weight": definition.fontWeight,
+        "--line-height": definition.lineHeight,
+        "--letter-spacing": definition.letterSpacing,
+        "--text-transform": definition.textTransform,
+        fontFamily: "var(--font-family)",
+        fontWeight: "var(--font-weight)",
+        lineHeight: "var(--line-height)",
+        letterSpacing: "var(--letter-spacing)",
+        textTransform: "var(--text-transform)",
+        fontStyle: definition.fontStyle,
+        textDecoration: definition.textDecoration,
+        textShadow: definition.textShadow,
+        whiteSpace: definition.whiteSpace,
+        wordSpacing: definition.wordSpacing,
+        textOverflow: definition.textOverflow,
+        direction: definition.direction,
+        writingMode: definition.writingMode,
+        textRendering: definition.textRendering,
+        hyphens: definition.hyphens
+      };
+      if (definition.fontSize) {
+        styles["--font-size"] = definition.fontSize;
+        styles.fontSize = "var(--font-size)";
+      }
+      if (definition.clamp) {
+        const customMinScreenSize = (options == null ? void 0 : options.customMinScreenSize) || 1024;
+        const customMaxScreenSize = (options == null ? void 0 : options.customMaxScreenSize) || 1440;
+        const clampValue = createRemClamp(
+          definition.clamp[0],
+          definition.clamp[1],
+          customMinScreenSize,
+          customMaxScreenSize
+        );
+        styles["--font-size"] = clampValue;
+        styles.fontSize = "var(--font-size)";
+      }
+      return styles;
+    } else {
+      let styles = {
+        fontFamily: definition.fontFamily,
+        fontWeight: definition.fontWeight,
+        lineHeight: definition.lineHeight,
+        letterSpacing: definition.letterSpacing,
+        textTransform: definition.textTransform,
+        fontSize: definition.fontSize,
+        fontStyle: definition.fontStyle,
+        textDecoration: definition.textDecoration,
+        textShadow: definition.textShadow,
+        whiteSpace: definition.whiteSpace,
+        wordSpacing: definition.wordSpacing,
+        textOverflow: definition.textOverflow,
+        direction: definition.direction,
+        writingMode: definition.writingMode,
+        textRendering: definition.textRendering,
+        hyphens: definition.hyphens
+      };
+      if (definition.fontSize) {
+        styles.fontSize = definition.fontSize;
+      }
+      if (definition.clamp) {
+        const customMinScreenSize = (options == null ? void 0 : options.customMinScreenSize) || 1024;
+        const customMaxScreenSize = (options == null ? void 0 : options.customMaxScreenSize) || 1440;
+        styles.fontSize = createRemClamp(
+          definition.clamp[0],
+          definition.clamp[1],
+          customMinScreenSize,
+          customMaxScreenSize
+        );
+      }
+      return styles;
     }
-    if (definition.clamp) {
-      const customMinScreenSize = (options == null ? void 0 : options.customMinScreenSize) || 1024;
-      const customMaxScreenSize = (options == null ? void 0 : options.customMaxScreenSize) || 1440;
-      styles.fontSize = createRemClamp(
-        definition.clamp[0],
-        definition.clamp[1],
-        customMinScreenSize,
-        customMaxScreenSize
-      );
-    }
-    return styles;
   };
   const defaultHeadlines = (options == null ? void 0 : options.disableDefaults) ? null : DEFAULT_HEADLINE;
   const mergedHeadlines = __spreadValues(__spreadValues({}, defaultHeadlines), options == null ? void 0 : options.customHeadlines);
   const defaultTexts = (options == null ? void 0 : options.disableDefaults) ? null : DEFAULT_TEXT;
   const mergedTexts = __spreadValues(__spreadValues({}, defaultTexts), options == null ? void 0 : options.customTexts);
+  if (isV4 && addComponents) {
+    addComponents({
+      ":root": {
+        "--buen-headline-font": "var(--font-family-sans, sans-serif)",
+        "--buen-body-font": "var(--font-family-serif, serif)",
+        "--buen-headline-color": "var(--color-gray-900, #111827)",
+        "--buen-text-color": "var(--color-gray-700, #374151)",
+        "@media (prefers-color-scheme: dark)": {
+          "--buen-headline-color": "var(--color-gray-100, #f3f4f6)",
+          "--buen-text-color": "var(--color-gray-300, #d1d5db)"
+        }
+      }
+    });
+  }
   let headlineUtilities = {};
   typedKeys(mergedHeadlines).forEach((key) => {
     const style = mergedHeadlines[key];
@@ -175,11 +233,39 @@ function buenTypeTailwind({ addUtilities }, options) {
       }
     }
   });
+  if (isV4 && matchUtility && theme) {
+    matchUtility(
+      {
+        "text-fluid": (value) => {
+          if (Array.isArray(value) && value.length === 2) {
+            const [min, max] = value;
+            return {
+              fontSize: `clamp(${min}rem, 5vw, ${max}rem)`
+            };
+          }
+          return { fontSize: value };
+        }
+      },
+      { values: theme("fontSize", {}) }
+    );
+  }
   addUtilities(headlineUtilities);
   addUtilities(textUtilities);
 }
-export {
+
+// src/index.ts
+var buenTypeTailwind2 = Object.assign(
+  // For Tailwind CSS 3 - Function that accepts the API directly
   buenTypeTailwind,
+  // For Tailwind CSS 4 - Plugin handler that can be called by the CSS @plugin directive
+  {
+    handler: (api, options = {}) => {
+      return buenTypeTailwind(api, options);
+    }
+  }
+);
+export {
+  buenTypeTailwind2 as buenTypeTailwind,
   createRemClamp,
   DEFAULT_HEADLINE as headlineDefault,
   DEFAULT_TEXT as textDefault

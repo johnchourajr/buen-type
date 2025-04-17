@@ -2,7 +2,6 @@
 
 import { computeFontSize } from "@/utils/computeFontSize";
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { TypeDefinition } from "../../../../src/index";
 import { sanitizeTitle } from "./TypeScale.utils";
@@ -54,7 +53,9 @@ export function TypeScale({ typeData, windowWidth = 0 }: TypeScaleProps) {
         }
 
         const newClamp =
-          clamp && computeFontSize(windowWidth, clamp[0], clamp[1], 480);
+          isClient && windowWidth > 0 && clamp
+            ? computeFontSize(windowWidth, clamp[0], clamp[1], 480)
+            : null;
 
         return (
           <div key={key} className="col-span-full flex flex-col">
@@ -67,17 +68,10 @@ export function TypeScale({ typeData, windowWidth = 0 }: TypeScaleProps) {
             >
               {sanitizeTitle(_id?.toString() || key)}
             </h2>
-            {newClamp && (
+            {isClient && (
               <pre>
-                {isClient && (
-                  <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={isClient && { opacity: 1, width: "auto" }}
-                  >
-                    {newClamp}
-                  </motion.span>
-                )}
-                <span>rem</span>
+                {newClamp && <span>{newClamp}</span>}
+                {newClamp && <span>rem</span>}
               </pre>
             )}
           </div>

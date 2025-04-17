@@ -9,25 +9,37 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/johnchourajr/type/graphs/commit-activity)
 
+---
 
-----
+A utility library for managing typographic scales in Tailwind CSS, with support for both Tailwind CSS 3 and 4.
 
-A utility library for managing typographic scales in Tailwind CSS.
+## 🚀 New in Version 2.0.0: Tailwind CSS 4 Support
+
+Version 2.0.0 adds support for Tailwind CSS 4 while maintaining backward compatibility with Tailwind CSS 3. Key features include:
+
+- **Dual API Support**: Works with both Tailwind CSS 3 (JavaScript-based) and Tailwind CSS 4 (CSS-based)
+- **CSS Variables**: Enhanced customization through CSS variables for Tailwind CSS 4
+- **Fluid Typography**: New fluid typography utility for responsive text scaling
+- **Improved Flexibility**: Better control over typography styles across your project
+
+See the [Migration Guide](./MIGRATION.md) for detailed information about upgrading.
 
 **Contents**
+
 - [@muybuen/type](#muybuentype)
   - [Installation](#installation)
     - [With NPM](#with-npm)
     - [With JSR](#with-jsr)
   - [Usage](#usage)
-    - [Add Plugin](#add-plugin)
-    - [Custom Type](#custom-type)
+    - [Tailwind CSS 4 (CSS-based configuration)](#tailwind-css-4-css-based-configuration)
+    - [Tailwind CSS 3 (JS-based configuration)](#tailwind-css-3-js-based-configuration)
   - [Defaults](#defaults)
   - [Type Properties](#type-properties)
     - [Clamp Property](#clamp-property)
   - [Custom Style Keys](#custom-style-keys)
   - [Custom Aliases for Styles](#custom-aliases-for-styles)
   - [Disable default type styles](#disable-default-type-styles)
+  - [Framework Compatibility](#framework-compatibility)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -46,10 +58,10 @@ yarn add @muybuen/type
 pnpm add @muybuen/type
 ```
 
-
 ### With JSR
 
 **NPM**
+
 ```bash
 # JSR package with NPM
 npx jsr add @muybuen/type
@@ -66,94 +78,135 @@ pnpm dlx jsr add @muybuen/type
 
 ## Usage
 
-### Add Plugin
+### Tailwind CSS 4 (CSS-based configuration)
 
-```tsx
+In Tailwind CSS 4, you can use the plugin with the new CSS-based configuration:
+
+```css
+/* main.css */
+@import "tailwindcss";
+@plugin '@muybuen/type';
+
+/* Optional customization using CSS variables */
+@theme {
+  --buen-headline-font: "Inter", sans-serif;
+  --buen-body-font: "Merriweather", serif;
+  --buen-headline-color: #1a202c;
+  --buen-text-color: #4a5568;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --buen-headline-color: #f7fafc;
+    --buen-text-color: #e2e8f0;
+  }
+}
+```
+
+Using the generated classes:
+
+```html
+<!-- Default headline classes -->
+<h1 class="headline-display-xl">Large Headline</h1>
+<p class="text-body">Regular paragraph</p>
+
+<!-- New fluid typography utility -->
+<h2 class="text-fluid-[2,4]">Fluid Heading</h2>
+```
+
+### Tailwind CSS 3 (JS-based configuration)
+
+For Tailwind CSS 3 projects, use the JavaScript-based configuration:
+
+```js
 // tailwind.config.js
-
 import { buenTypeTailwind } from "@muybuen/type";
 
 module.exports = {
   //  ...
-  plugins: [
-    buenTypeTailwind
-  ]
+  plugins: [buenTypeTailwind],
 };
 ```
 
-### Custom Type
+#### Custom Type Definitions
 
-1. Define custom styles, using either the default keys. You can also add [custom keys](#custom-style-keys).
+1. Define custom styles:
 
 ```ts
 // type-config.ts
+import { TypeDefinition } from "@muybuen/type";
 
-const customHeadlines = {
-  'display-xl': {
+const customHeadlines: Record<string, TypeDefinition> = {
+  "display-xl": {
     fontFamily: "'Inter', 'sans-serif'",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     clamp: [4.5, 9],
-    letterSpacing: '-0.1em',
+    letterSpacing: "-0.1em",
     lineHeight: 1,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   // other headline styles
-}
+};
 
-const customTexts = {
-  'body': {
+const customTexts: Record<string, TypeDefinition> = {
+  body: {
     fontFamily: "'Inter', 'sans-serif'",
-    fontWeight: 'normal',
-    fontSize: '1.1rem'
-    letterSpacing: '0em',
+    fontWeight: "normal",
+    fontSize: "1.1rem",
+    letterSpacing: "0em",
     lineHeight: 1.5,
-    textTransform: 'none',
+    textTransform: "none",
   },
   // other text styles
-}
+};
 ```
 
-2. Add the custom styles to the plugin
+2. Add the custom styles to the plugin:
 
-```tsx
-// tailwind.config.ts
-
+```js
+// tailwind.config.js
 import { buenTypeTailwind } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {
-  buenTypeTailwind({ addUtilities }, {
-    customHeadlines,
-    customTexts
-  });
-};
+  buenTypeTailwind(
+    { addUtilities },
+    {
+      customHeadlines,
+      customTexts,
+      customMinScreenSize: 480, // Optional: Default is 1024
+      customMaxScreenSize: 1280, // Optional: Default is 1440
+    },
+  );
+}
 
 module.exports = {
   //  ...
-  plugins: [
-    typePlugin
-  ]
+  plugins: [typePlugin],
 };
 ```
 
-3. Use tailwind utility classes in the code
+3. Use the utility classes:
 
-```tsx
-// SomeComponent.tsx
-
+```jsx
+// SomeComponent.jsx
 export const SomeComponent = () => (
   <div>
     <h1 className="headline-display-xl">Hello World</h1>
-    <p className="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p className="text-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
   </div>
 );
-
 ```
 
 ## Defaults
+
 The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
 
 **Default Headline Types:**
+
 - `display-xxl`
 - `display-xl`
 - `display-lg`
@@ -162,6 +215,7 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 - `display-xs`
 
 **Default Text Types:**
+
 - `title`
 - `paragraph`
 - `string`
@@ -179,7 +233,6 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 | `textTransform`  | `string`           | The transformation applied to the text (e.g., uppercase).    |
 | `fontSize`       | `string`           | The size of the font.                                        |
 | `clamp`          | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
-| `color`          | `string`           | The color of the text.                                       |
 | `fontStyle`      | `string`           | The style of the font (e.g., normal, italic, oblique).       |
 | `textDecoration` | `string`           | Decorations added to the text (e.g., underline).             |
 | `textShadow`     | `string`           | Adds shadow to the text.                                     |
@@ -191,74 +244,69 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 | `textRendering`  | `string`           | Provides rendering hints to the browser.                     |
 | `hyphens`        | `string`           | Specifies how words should be hyphenated.                    |
 
-
 ### Clamp Property
 
-The clamp property is used to set the range for font sizes for a particular type. The first value represents the minimum size, while the second value represents the maximum size. Consequently, the resulting font size will dynamically scale between 1024px and 1440px.
+The clamp property sets a responsive font size range. The first value is the minimum size (rem), and the second is the maximum size (rem). The font size dynamically scales between these values based on the viewport width (from the minimum screen size to the maximum screen size).
 
-```tsx
+```ts
 // type-config.ts
-
 const customHeadlines = {
-  'display-xl': {
-    fontFamily: 'Arial, sans-serif',
-    clamp: [4.5, 9],
+  "display-xl": {
+    fontFamily: "Arial, sans-serif",
+    clamp: [4.5, 9], // Will scale from 4.5rem to 9rem
   },
   // other styles
-}
+};
 ```
 
 ## Custom Style Keys
 
-When creating custom type definitions, either the default keys can be used or they can be expanded. They should be written in kebab-case strings.
+You can use default keys or create custom ones in kebab-case:
 
-The following is an example of how to define custom type definitions:
-
-```tsx
+```ts
 // type-config.ts
-
 const customHeadlines = {
-  'custom-display': {
-    fontFamily: 'Arial, sans-serif',
-    // use stype properties
+  "custom-display": {
+    fontFamily: "Arial, sans-serif",
+    // use type properties
   },
   // other headline styles
-}
+};
 
 const customTexts = {
-  'custom-paragraph': {
-    fontFamily: 'Arial, sans-serif',
-    // use stype properties
+  "custom-paragraph": {
+    fontFamily: "Arial, sans-serif",
+    // use type properties
   },
   // other text styles
-}
+};
 ```
 
-When using custom styled keys as tailwind classes, they'll be named as `headline-your-key-name`. For example, if your key was `'custom-display'` in the `customHeadlines` object, it would be used as `'headline-custom-display'` class in tailwind.
+These will be accessible as `headline-custom-display` and `text-custom-paragraph` classes.
 
 ## Custom Aliases for Styles
 
-If you're replaceing an existing style in the defaults, you can add a custom alias for the style. This is done by adding a `classAlias` key to the style object.
+You can add aliases for existing styles:
 
-```tsx
+```ts
 // type-config.ts
-
 const customHeadlines = {
-  'display-xl': {
-    fontFamily: 'Arial, sans-serif',
-    classAlias: 'primary-headline',
+  "display-xl": {
+    fontFamily: "Arial, sans-serif",
+    classAlias: ["primary-headline", "main-title"],
   },
   // other headline styles
-}
+};
 ```
+
+This makes the style available through the additional class names.
 
 ## Disable default type styles
 
-To disable the default type styles, set the `disableDefaults` option to `true`.
+To use only your custom styles:
 
-```tsx
-// tailwind.config.ts
-
+```js
+// tailwind.config.js
 import { buenTypeTailwind } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
@@ -266,22 +314,30 @@ function typePlugin({ addUtilities }) {
   buenTypeTailwind(
     { addUtilities },
     {
+      customHeadlines,
+      customTexts,
       disableDefaults: true,
     },
   );
-};
+}
 
 module.exports = {
   //  ...
-  plugins: [
-    typePlugin
-  ]
+  plugins: [typePlugin],
 };
 ```
 
+## Framework Compatibility
+
+- **Next.js**: We recommend using the Tailwind CSS 3 approach until Next.js provides official Tailwind CSS 4 support.
+- **Vite/Standalone**: Tailwind CSS 4's CSS-based approach should work well.
+- **Custom Build Setups**: Test thoroughly with your specific toolchain.
+
+For more details, see the [Migration Guide](./MIGRATION.md).
+
 ## Contributing
 
-This project is maintained by John Choura, but it open to contributions from anyone. See [CONTRIBUTORS](https://github.com/johnchourajr/buen-type/blob/main/CONTRIBUTORS.md) for a guide on how to contribute.
+This project is maintained by John Choura, but is open to contributions from anyone. See [CONTRIBUTING.md](https://github.com/johnchourajr/buen-type/blob/main/CONTRIBUTING.md) for a guide on how to contribute.
 
 ## License
 

@@ -38,7 +38,8 @@ body {
   }
 
   .subgrid {
-    @apply grid grid-cols-subgrid;
+    display: grid;
+    grid-template-columns: subgrid;
   }
 }
 

@@ -1,0 +1,53 @@
+/**
+ * @plugin @muybuen/type
+ *
+ * This is a template for using @muybuen/type with Tailwind CSS 4's CSS-based configuration.
+ * Import or reference this file in your main CSS file to get started.
+ */
+
+/* Import Tailwind CSS and add the plugin */
+@import "tailwindcss";
+@plugin '@muybuen/type';
+
+/*
+ * Typography Customization
+ *
+ * Use CSS variables in the @theme directive to customize typography styles.
+ * These variables will be used by the plugin for generating typography classes.
+ */
+@theme {
+  /* Base font families */
+  --buen-headline-font: "Inter", sans-serif;
+  --buen-body-font: "Merriweather", serif;
+
+  /* Text colors */
+  --buen-headline-color: #1a202c;
+  --buen-text-color: #4a5568;
+
+  /* Optional: Custom sizes for responsive clamp calculations */
+  --buen-min-screen-size: 480px; /* Default: 1024px */
+  --buen-max-screen-size: 1280px; /* Default: 1440px */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --buen-headline-color: #f7fafc;
+    --buen-text-color: #e2e8f0;
+  }
+}
+
+/*
+ * Usage Examples:
+ *
+ * Default headline classes:
+ * .headline-display-xxl, .headline-display-xl, .headline-display-lg,
+ * .headline-display-md, .headline-display-sm, .headline-display-xs
+ *
+ * Default text classes:
+ * .text-title, .text-paragraph, .text-string, .text-body, .text-caption
+ *
+ * Fluid typography (Tailwind CSS 4 only):
+ * .text-fluid-[min,max] - where min and max are rem values
+ * Example: .text-fluid-[1.5,3]
+ */

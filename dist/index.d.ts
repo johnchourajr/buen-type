@@ -73,19 +73,20 @@ type CustomTypeDefinitions = {
     customMaxScreenSize?: number;
 };
 
-type AddUtilities = {
-    (utilities: Record<string, any>, options?: any): void;
-};
+interface PluginAPI {
+    addUtilities: (utilities: Record<string, any>, options?: any) => void;
+    utility?: (utilities: Record<string, any>) => void;
+    addComponents?: (components: Record<string, any>) => void;
+    matchUtility?: (utilities: Record<string, any>, options?: any) => void;
+    theme?: (path: string, defaultValue?: any) => any;
+}
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *
  * @todo Explore making minScreenSize and maxScreenSize configurable in createRemClamp
- * @todo Make addUtilities a named parameter, importing @tailwindcss/types
  * @todo Make return type more specific to what tailwind plugins expect
  */
-declare function buenTypeTailwind({ addUtilities }: {
-    addUtilities: AddUtilities;
-}, options?: CustomTypeDefinitions): void;
+declare function buenTypeTailwind$1(api: PluginAPI, options?: CustomTypeDefinitions): void;
 
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
@@ -105,5 +106,88 @@ declare const DEFAULT_HEADLINE: TypeDefinitionHeadlines;
  * Default text object
  */
 declare const DEFAULT_TEXT: TypeDefinitionTexts;
+
+/**
+ * A module that converts an object of headlinea and text defs into Tailwind CSS utilities.
+ *
+ * @example
+ *
+ *  1. Define custom styles, using either the default keys or by expanding upon them
+ *
+ * ```ts
+ * // type-config.ts
+ *
+ * const customHeadlines = {
+ *   'display-xl': {
+ *     fontFamily: "'Inter', 'sans-serif'",
+ *     fontWeight: 'bold',
+ *     clamp: [4.5, 9],
+ *     letterSpacing: '-0.1em',
+ *     lineHeight: 1,
+ *     textTransform: 'uppercase',
+ *   },
+ *   // ...
+ * }
+ *
+ * const customTexts = {
+ *   'body': {
+ *     fontFamily: "'Inter', 'sans-serif'",
+ *     fontWeight: 'normal',
+ *     fontSize: '1.1rem'
+ *     letterSpacing: '0em',
+ *     lineHeight: 1.5,
+ *     textTransform: 'none',
+ *   },
+ *   // ...
+ * }
+ * ```
+ *
+ * 2. Add the custom styles to the plugin
+ *
+ * ```tsx
+ * // tailwind.config.ts
+ * import { buenTypeTailwind } from "@muybuen/type";
+ * import { customHeadlines, customTexts } from "./type-config";
+ *
+ * function typePlugin({ addUtilities }) {
+ *   buenTypeTailwind({ addUtilities }, {
+ *     customHeadlines,
+ *     customTexts
+ *   });
+ * };
+ *
+ * module.exports = {
+ *   //  ...
+ *   plugins: [
+ *     typePlugin
+ *   ]
+ * };
+ * ```
+ *
+ * @module
+ */
+
+/**
+ * Main plugin export with compatibility for both Tailwind CSS 3 and 4.
+ *
+ * For Tailwind CSS 3:
+ * ```js
+ * // tailwind.config.js
+ * const { buenTypeTailwind } = require('@muybuen/type');
+ *
+ * module.exports = {
+ *   plugins: [buenTypeTailwind]
+ * }
+ * ```
+ *
+ * For Tailwind CSS 4:
+ * ```css
+ * @import 'tailwindcss';
+ * @plugin '@muybuen/type';
+ * ```
+ */
+declare const buenTypeTailwind: typeof buenTypeTailwind$1 & {
+    handler: (api: any, options?: CustomTypeDefinitions) => void;
+};
 
 export { type CustomTypeDefinitions, type TypeDefinition, type TypeDefinitionHeadlines, type TypeDefinitionTexts, buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };

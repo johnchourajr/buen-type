@@ -57,7 +57,38 @@
  *
  * @module
  */
-export { buenTypeTailwind } from "./buenTypeTailwind";
+import { buenTypeTailwind as buenTypeTailwindCore } from "./buenTypeTailwind";
+import { CustomTypeDefinitions } from "./types";
+
+/**
+ * Main plugin export with compatibility for both Tailwind CSS 3 and 4.
+ *
+ * For Tailwind CSS 3:
+ * ```js
+ * // tailwind.config.js
+ * const { buenTypeTailwind } = require('@muybuen/type');
+ *
+ * module.exports = {
+ *   plugins: [buenTypeTailwind]
+ * }
+ * ```
+ *
+ * For Tailwind CSS 4:
+ * ```css
+ * @import 'tailwindcss';
+ * @plugin '@muybuen/type';
+ * ```
+ */
+export const buenTypeTailwind = Object.assign(
+  // For Tailwind CSS 3 - Function that accepts the API directly
+  buenTypeTailwindCore,
+  // For Tailwind CSS 4 - Plugin handler that can be called by the CSS @plugin directive
+  {
+    handler: (api: any, options: CustomTypeDefinitions = {}) => {
+      return buenTypeTailwindCore(api, options);
+    }
+  }
+);
 
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
@@ -79,10 +110,10 @@ export { createRemClamp } from "./utils/createRemClamp";
  * @module
  */
 export type {
-  CustomTypeDefinitions,
-  TypeDefinition,
-  TypeDefinitionHeadlines,
-  TypeDefinitionTexts,
+    CustomTypeDefinitions,
+    TypeDefinition,
+    TypeDefinitionHeadlines,
+    TypeDefinitionTexts
 } from "./types.ts";
 
 /**
@@ -91,6 +122,7 @@ export type {
  * @module
  */
 export {
-  DEFAULT_HEADLINE as headlineDefault,
-  DEFAULT_TEXT as textDefault,
+    DEFAULT_HEADLINE as headlineDefault,
+    DEFAULT_TEXT as textDefault
 } from "./defaults";
+

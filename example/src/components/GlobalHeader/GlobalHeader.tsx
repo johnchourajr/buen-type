@@ -47,6 +47,7 @@ export function GlobalHeader() {
         "w-full fixed top-0 z-50",
         "grid grid-cols-4 md:grid-cols-6 gap-x-4",
         "px-4 pointer-events-none",
+        // "border-2 border-[red]",
       )}
     >
       <section className="subgrid col-span-full py-3 pointer-events-none">
@@ -55,12 +56,18 @@ export function GlobalHeader() {
             "subgrid col-start-1 col-span-full md:col-start-5 gap-y-4",
             "relative pointer-events-auto",
             "before:absolute before:-inset-4 before:content-[''] before:bg-black before:-z-10 before:bg-opacity-50 before:backdrop-blur-sm before:rounded-bl-md",
+            // "border-2 border-[yellow]",
           )}
           initial={"initial"}
           variants={parentVariants}
           animate={scrolled ? "hidden" : "initial"}
         >
-          <div className="col-span-full flex w-full gap-4 items-center justify-center">
+          <div
+            className={clsx(
+              "col-span-full flex w-full gap-4 items-center justify-center",
+              // "border-2 border-[blue]",
+            )}
+          >
             <GlobalHeaderCopyButton text={"npm i @muybuen/type"} />
             <Link
               href={"https://www.npmjs.com/package/@muybuen/type"}

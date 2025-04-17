@@ -1,7 +1,7 @@
-import containerQueries from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
-import { PluginAPI } from "tailwindcss/types/config";
 import { buenTypeTailwind } from "../src/index";
+
+import { PluginAPI } from "tailwindcss/types/config";
 import { customTexts } from "./src/config/type";
 
 function typePlugin({ addUtilities }: PluginAPI) {
@@ -63,7 +63,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [typePlugin, containerQueries],
+  plugins: [typePlugin],
 };
 
 export default config;
