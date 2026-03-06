@@ -61,7 +61,7 @@ export function TypeScale({ typeData, windowWidth = 0 }: TypeScaleProps) {
             <h2
               className={clsx(
                 "text-start font-bold leading-none whitespace-pre",
-                "-ml-0.05em mb-0.25rem",
+                "-ml-[0.05em] mb-[0.25rem]",
                 style(),
               )}
             >

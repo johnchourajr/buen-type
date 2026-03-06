@@ -12,10 +12,10 @@ function ScaleLine({ className }: { className?: string }) {
   return (
     <div
       className={clsx(
-        "fixed top-0 h-full border-r-1",
-        "border-dashed border-[rgba(var(--color-primary),.25)]",
-        "after:absolute after:right-1 after:-top-2 after:p-1 after:rounded-md after:text-[rgba(var(--color-primary),.5)]",
-        "before:absolute before:right-1 before:-bottom-1 before:p-1 before:rounded-md before:text-[rgba(var(--color-primary),.5)]",
+        "fixed top-0 h-full border-r",
+        "border-dashed border-primary/25",
+        "after:absolute after:right-1 after:-top-2 after:p-1 after:rounded-md after:text-primary/50",
+        "before:absolute before:right-1 before:-bottom-1 before:p-1 before:rounded-md before:text-primary/50",
         className,
       )}
     />

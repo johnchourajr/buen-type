@@ -36,17 +36,17 @@ export function PanelCode({ className, panelContent }: PanelCodeProps) {
     <div
       className={clsx(
         "@container",
-        "w-full mt-8 md:mt-0 border-2 border-[--color-primary] rounded-2xl md:h-full right-0 top-0 z-0 overflow-hidden col-span-full",
+        "w-full mt-8 md:mt-0 border-2 border-primary rounded-2xl md:h-full right-0 top-0 z-0 overflow-hidden col-span-full",
         className,
       )}
     >
-      <div className="relative flex flex-row items-start w-full overflow-scroll justify-start border-b-2 border-[--color-primary]">
+      <div className="relative flex flex-row items-start w-full overflow-scroll justify-start border-b-2 border-primary">
         {panelContent &&
           panelContent.map((tab, index) => (
             <button
               key={tab.title}
               className={clsx(
-                "px-4 py-3 border-r-2 border-[--color-primary] h-full",
+                "px-4 py-3 border-r-2 border-primary h-full",
               )}
               onClick={() => setActiveTab(index)}
             >

@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "../../buen-type.plugin.ts";
+
+@source "../../node_modules/@muybuen/type/dist";
+
+@theme {
+  --color-primary: #00ff0a;
+  --color-background: #000000;
+
+  --font-bold: "GoshaSans-Ultrabold", sans-serif;
+  --font-sans: "GoshaSans-Regular", sans-serif;
+}
 
 @font-face {
   font-family: "GoshaSans-Ultrabold";
@@ -19,30 +29,19 @@
 }
 
 :root {
-  --color-primary: 0, 255, 10;
+  --color-primary-rgb: 0, 255, 10;
   --color-primary-hex: #00ff0a;
-  --color-secondary: 0, 0, 0;
   --color-secondary-hex: #000000;
 }
 
 body {
-  color: rgb(var(--color-primary));
-  background: rgb(var(--color-secondary));
+  color: var(--color-primary);
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .subgrid {
-    @apply grid grid-cols-subgrid;
-  }
-}
-
-.glowing-text {
-  /* @apply text-6xl font-bold bg-clip-text; */
-  backdrop-filter: url(#glow) blur(10px);
+@utility subgrid {
+  display: grid;
+  grid-template-columns: subgrid;
 }

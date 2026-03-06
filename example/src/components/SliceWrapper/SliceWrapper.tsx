@@ -17,7 +17,7 @@ export function SliceWrapper({
   return (
     <section
       className={clsx(
-        "grid grid-cols-subgrid border-t-2 border-[--color-primary] col-span-full pt-2 mt-[4vw] overflow-hidden",
+        "grid grid-cols-subgrid border-t-2 border-primary col-span-full pt-2 mt-[4vw] overflow-hidden",
         className,
       )}
     >

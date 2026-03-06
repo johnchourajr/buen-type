@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@muybuen/type": "file:..",
-    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/postcss": "^4.2.1",
     "clsx": "^2.1.1",
     "motion": "^12.35.0",
-    "next": "^16.1.6",
+    "next": "15.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-resizable": "^3.0.5",
+    "tailwindcss": "^4.2.1",
     "three": "^0.172.0"
   },
   "devDependencies": {
@@ -27,10 +28,8 @@
     "@types/react-resizable": "^3.0.7",
     "@types/three": "^0.172.0",
     "eslint": "^9.39.3",
-    "eslint-config-next": "^16.1.6",
-    "postcss": "^8",
+    "eslint-config-next": "15.1",
     "shiki": "^1.9.0",
-    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

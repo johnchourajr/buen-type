@@ -8,7 +8,7 @@ export function IframeTag({ children }: { children: React.ReactNode }) {
     <motion.div
       className={clsx(
         "absolute -top-2 bg-black p-1 w-auto right-5 rounded-md",
-        "text-[--color-primary-hex]",
+        "text-primary",
         "pointer-events-none select-none",
       )}
       initial={{ opacity: 0, x: 6 }}

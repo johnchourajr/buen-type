@@ -44,5 +44,5 @@
 
 .resizer:hover,
 .resizer:active {
-  border-color: rgba(var(--color-primary), 0.5);
+  border-color: color-mix(in srgb, var(--color-primary-hex) 50%, transparent);
 }

@@ -31,7 +31,7 @@ export function GlobalHeaderCopyButton({ text }: { text: string }) {
       onMouseLeave={() => !isCopied && setIsHovering(false)}
       className={clsx(
         "relative overflow-hidden",
-        "flex w-full border-dashed rounded-sm border-[--color-primary-hex] border-0.5 h-9 px-3 justify-start items-center",
+        "flex w-full border-dashed rounded-sm border-primary border-[0.5px] h-9 px-3 justify-start items-center",
       )}
     >
       <pre className="!font-mono text-caption select-text">{text}</pre>

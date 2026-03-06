@@ -1,5 +1,4 @@
-import { GlobalFooter } from "@/components/GlobalFooter";
-import { GlobalHeader } from "@/components/GlobalHeader";
+import { ClientShell } from "@/components/ClientShell";
 import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
@@ -27,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans">
-        <GlobalHeader />
-        {children}
-        <GlobalFooter />
+        <ClientShell>{children}</ClientShell>
       </body>
     </html>
   );
