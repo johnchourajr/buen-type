@@ -28,13 +28,16 @@
     "dev": "tsdown --watch",
     "prepublishOnly": "npm run build",
     "lint": "prettier --write .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "prettier": "^3.2.5",
     "tsdown": "^0.21.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.0.18"
   },
   "publishConfig": {
     "access": "public"
