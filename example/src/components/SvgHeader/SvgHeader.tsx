@@ -6,7 +6,7 @@ import { logotype } from "./logotype";
 
 type SvgHeaderProps = {
   className?: string;
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
 };
 
 const SvgHeader = ({ className, containerRef }: SvgHeaderProps) => {
@@ -25,7 +25,7 @@ const SvgHeader = ({ className, containerRef }: SvgHeaderProps) => {
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
-  }, []);
+  }, [containerRef]);
   return (
     <svg
       className={clsx("absolute bottom-0 w-full aspect-[23.6/9]", className)}

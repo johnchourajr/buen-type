@@ -143,7 +143,6 @@ export const GenThreeShader = ({
       container.removeChild(renderer.domElement);
       container.removeEventListener("mousemove", handleMouseMove);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- Remove onDownload from deps
   }, [shaderConfig, baseUniforms]);
 
   return (

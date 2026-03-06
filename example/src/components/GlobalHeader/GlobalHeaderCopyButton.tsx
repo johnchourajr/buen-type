@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { GlobalHeaderActionMessage } from "./GlobalHeaderActionMessage";
 
@@ -31,13 +31,15 @@ export function GlobalHeaderCopyButton({ text }: { text: string }) {
       onMouseLeave={() => !isCopied && setIsHovering(false)}
       className={clsx(
         "relative overflow-hidden",
-        "flex w-full border-dashed rounded-sm border-[--foreground-rgb] border-0.5 h-9 px-3 justify-start items-center",
+        "flex w-full border-dashed rounded-sm border-[--color-primary-hex] border-0.5 h-9 px-3 justify-start items-center",
       )}
     >
       <pre className="!font-mono text-caption select-text">{text}</pre>
       <AnimatePresence>
-        {isHovering && !isCopied && <GlobalHeaderActionMessage text="copy" />}
-        {isCopied && <GlobalHeaderActionMessage text="copied" />}
+        {isHovering && !isCopied && (
+          <GlobalHeaderActionMessage key="copy" text="copy" />
+        )}
+        {isCopied && <GlobalHeaderActionMessage key="copied" text="copied" />}
       </AnimatePresence>
     </button>
   );

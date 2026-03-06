@@ -31,7 +31,6 @@ const MyComponent = () => {
 
 - `className?: string` - Optional CSS class name for the container
 - `shaderConfig: ShaderConfig` - Configuration object for the shader
-- `onDownload: (ref: () => void) => void` - Callback to receive the download function
 
 ### ShaderConfig Interface
 

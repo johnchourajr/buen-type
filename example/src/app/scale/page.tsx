@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import { TypeScale } from "@/components/TypeScale/TypeScale";
 import { useWindowWidth } from "@/utils/useWindowWidth";
 
-import { headlineDefault } from "../../../../src/index";
+import { headlineDefault } from "@muybuen/type";
 
 function ScaleLine({ className }: { className?: string }) {
   return (

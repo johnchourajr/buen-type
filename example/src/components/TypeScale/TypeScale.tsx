@@ -2,9 +2,9 @@
 
 import { computeFontSize } from "@/utils/computeFontSize";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { TypeDefinition } from "../../../../src/index";
+import { TypeDefinition } from "@muybuen/type";
 import { sanitizeTitle } from "./TypeScale.utils";
 
 export type TypeScaleProps = {

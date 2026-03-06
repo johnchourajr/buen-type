@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { IframeTag } from "./IframeTag.element";
@@ -107,8 +107,8 @@ function IframeWrapper({
         scrolling="no"
       />
       <AnimatePresence>
-        {isDragging && <IframeTag>{iframeWidth}px</IframeTag>}
-        {isHovering && !isDragging && <IframeTag>drag</IframeTag>}
+        {isDragging && <IframeTag key="width">{iframeWidth}px</IframeTag>}
+        {isHovering && !isDragging && <IframeTag key="drag">drag</IframeTag>}
       </AnimatePresence>
       <div
         className={clsx(styles.resizer)}
