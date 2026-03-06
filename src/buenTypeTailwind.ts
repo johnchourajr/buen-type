@@ -93,3 +93,33 @@ export function buenTypeTailwind(
   addUtilities(headlineUtilities);
   addUtilities(textUtilities);
 }
+
+/**
+ * Factory function that returns a Tailwind plugin function.
+ * Works with both Tailwind v3 (config plugins array) and v4 (@plugin directive).
+ *
+ * @example Tailwind v3
+ * ```ts
+ * // tailwind.config.ts
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ *
+ * export default {
+ *   plugins: [createBuenTypePlugin({ customTexts, customHeadlines })],
+ * };
+ * ```
+ *
+ * @example Tailwind v4
+ * ```ts
+ * // buen-type.plugin.ts
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ * export default createBuenTypePlugin({ customTexts });
+ * ```
+ * ```css
+ * @plugin "./buen-type.plugin.ts";
+ * ```
+ */
+export function createBuenTypePlugin(options?: CustomTypeDefinitions) {
+  return function ({ addUtilities }: { addUtilities: AddUtilities }) {
+    buenTypeTailwind({ addUtilities }, options);
+  };
+}

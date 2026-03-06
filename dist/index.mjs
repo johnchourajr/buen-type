@@ -173,7 +173,36 @@ function buenTypeTailwind({ addUtilities }, options) {
 	addUtilities(headlineUtilities);
 	addUtilities(textUtilities);
 }
+/**
+* Factory function that returns a Tailwind plugin function.
+* Works with both Tailwind v3 (config plugins array) and v4 (@plugin directive).
+*
+* @example Tailwind v3
+* ```ts
+* // tailwind.config.ts
+* import { createBuenTypePlugin } from "@muybuen/type";
+*
+* export default {
+*   plugins: [createBuenTypePlugin({ customTexts, customHeadlines })],
+* };
+* ```
+*
+* @example Tailwind v4
+* ```ts
+* // buen-type.plugin.ts
+* import { createBuenTypePlugin } from "@muybuen/type";
+* export default createBuenTypePlugin({ customTexts });
+* ```
+* ```css
+* @plugin "./buen-type.plugin.ts";
+* ```
+*/
+function createBuenTypePlugin(options) {
+	return function({ addUtilities }) {
+		buenTypeTailwind({ addUtilities }, options);
+	};
+}
 //#endregion
-export { buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
+export { buenTypeTailwind, createBuenTypePlugin, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
 
 //# sourceMappingURL=index.mjs.map

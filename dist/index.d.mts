@@ -94,6 +94,35 @@ declare function buenTypeTailwind({
 }: {
   addUtilities: AddUtilities;
 }, options?: CustomTypeDefinitions): void;
+/**
+ * Factory function that returns a Tailwind plugin function.
+ * Works with both Tailwind v3 (config plugins array) and v4 (@plugin directive).
+ *
+ * @example Tailwind v3
+ * ```ts
+ * // tailwind.config.ts
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ *
+ * export default {
+ *   plugins: [createBuenTypePlugin({ customTexts, customHeadlines })],
+ * };
+ * ```
+ *
+ * @example Tailwind v4
+ * ```ts
+ * // buen-type.plugin.ts
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ * export default createBuenTypePlugin({ customTexts });
+ * ```
+ * ```css
+ * @plugin "./buen-type.plugin.ts";
+ * ```
+ */
+declare function createBuenTypePlugin(options?: CustomTypeDefinitions): ({
+  addUtilities
+}: {
+  addUtilities: AddUtilities;
+}) => void;
 //#endregion
 //#region src/utils/createRemClamp.d.ts
 /**
@@ -116,5 +145,5 @@ declare const DEFAULT_HEADLINE: TypeDefinitionHeadlines;
  */
 declare const DEFAULT_TEXT: TypeDefinitionTexts;
 //#endregion
-export { type CustomTypeDefinitions, type TypeDefinition, type TypeDefinitionHeadlines, type TypeDefinitionTexts, buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
+export { type CustomTypeDefinitions, type TypeDefinition, type TypeDefinitionHeadlines, type TypeDefinitionTexts, buenTypeTailwind, createBuenTypePlugin, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
 //# sourceMappingURL=index.d.mts.map

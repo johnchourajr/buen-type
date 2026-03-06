@@ -57,7 +57,7 @@
  *
  * @module
  */
-export { buenTypeTailwind } from "./buenTypeTailwind";
+export { buenTypeTailwind, createBuenTypePlugin } from "./buenTypeTailwind";
 
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
