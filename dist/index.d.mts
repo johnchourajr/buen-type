@@ -1,3 +1,4 @@
+//#region src/types.d.ts
 /**
  * Default headline types, e.g. `display-xxl`, `display-xl`, etc.
  */
@@ -34,25 +35,25 @@ type DefaultTextTypes = "title" | "paragraph" | "string" | "body" | "caption";
  * @param hyphens - e.g., none, manual, auto
  */
 type TypeDefinition = {
-    _id?: string;
-    classAlias?: string[];
-    fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
-    fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
-    lineHeight?: number | (string & {});
-    letterSpacing?: (string & {});
-    textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
-    fontSize?: (string & {});
-    clamp?: [number, number];
-    fontStyle?: "normal" | "italic" | "oblique" | (string & {});
-    textDecoration?: "underline" | "overline" | "line-through" | "none" | (string & {});
-    textShadow?: "none" | (string & {});
-    whiteSpace?: "normal" | "nowrap" | "pre" | "pre-wrap" | "pre-line" | (string & {});
-    wordSpacing?: "normal" | (string & {});
-    textOverflow?: "clip" | "ellipsis" | (string & {});
-    direction?: "ltr" | "rtl" | (string & {});
-    writingMode?: "horizontal-tb" | "vertical-rl" | "vertical-lr" | (string & {});
-    textRendering?: "auto" | "optimizeLegibility" | "optimizeSpeed" | "geometricPrecision" | (string & {});
-    hyphens?: "none" | "manual" | "auto" | (string & {});
+  _id?: string;
+  classAlias?: string[];
+  fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
+  fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
+  lineHeight?: number | (string & {});
+  letterSpacing?: (string & {});
+  textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
+  fontSize?: (string & {});
+  clamp?: [number, number];
+  fontStyle?: "normal" | "italic" | "oblique" | (string & {});
+  textDecoration?: "underline" | "overline" | "line-through" | "none" | (string & {});
+  textShadow?: "none" | (string & {});
+  whiteSpace?: "normal" | "nowrap" | "pre" | "pre-wrap" | "pre-line" | (string & {});
+  wordSpacing?: "normal" | (string & {});
+  textOverflow?: "clip" | "ellipsis" | (string & {});
+  direction?: "ltr" | "rtl" | (string & {});
+  writingMode?: "horizontal-tb" | "vertical-rl" | "vertical-lr" | (string & {});
+  textRendering?: "auto" | "optimizeLegibility" | "optimizeSpeed" | "geometricPrecision" | (string & {});
+  hyphens?: "none" | "manual" | "auto" | (string & {});
 };
 /**
  * CSS output properties, mirrors TypeDefinition excluding clamp and _id
@@ -70,15 +71,16 @@ type TypeDefinitionTexts = Record<DefaultTextTypes, TypeDefinition>;
  * Custom type definitions for headlines and texts.
  */
 type CustomTypeDefinitions = {
-    customHeadlines?: Record<string, TypeDefinition>;
-    customTexts?: Record<string, TypeDefinition>;
-    disableDefaults?: boolean;
-    customMinScreenSize?: number;
-    customMaxScreenSize?: number;
+  customHeadlines?: Record<string, TypeDefinition>;
+  customTexts?: Record<string, TypeDefinition>;
+  disableDefaults?: boolean;
+  customMinScreenSize?: number;
+  customMaxScreenSize?: number;
 };
-
+//#endregion
+//#region src/buenTypeTailwind.d.ts
 type AddUtilities = {
-    (utilities: Record<string, CSSOutput>): void;
+  (utilities: Record<string, CSSOutput>): void;
 };
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
@@ -87,10 +89,13 @@ type AddUtilities = {
  * @todo Make addUtilities a named parameter, importing @tailwindcss/types
  * @todo Make return type more specific to what tailwind plugins expect
  */
-declare function buenTypeTailwind({ addUtilities }: {
-    addUtilities: AddUtilities;
+declare function buenTypeTailwind({
+  addUtilities
+}: {
+  addUtilities: AddUtilities;
 }, options?: CustomTypeDefinitions): void;
-
+//#endregion
+//#region src/utils/createRemClamp.d.ts
 /**
  * A module that provides a function to create a `rem`-based `clamp` function.
  *
@@ -100,7 +105,8 @@ declare function buenTypeTailwind({ addUtilities }: {
  * @param maxScreenSize - The maximum screen size in pixels
  */
 declare function createRemClamp(minFontSize: number, maxFontSize: number, minScreenSize?: number, maxScreenSize?: number): string;
-
+//#endregion
+//#region src/defaults.d.ts
 /**
  * Default headline object
  */
@@ -109,5 +115,6 @@ declare const DEFAULT_HEADLINE: TypeDefinitionHeadlines;
  * Default text object
  */
 declare const DEFAULT_TEXT: TypeDefinitionTexts;
-
+//#endregion
 export { type CustomTypeDefinitions, type TypeDefinition, type TypeDefinitionHeadlines, type TypeDefinitionTexts, buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
+//# sourceMappingURL=index.d.mts.map

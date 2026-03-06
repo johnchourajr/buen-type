@@ -1,3 +1,4 @@
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 //#region src/defaults.ts
 /**
 * Default headline object
@@ -174,6 +175,9 @@ function buenTypeTailwind({ addUtilities }, options) {
 	addUtilities(textUtilities);
 }
 //#endregion
-export { buenTypeTailwind, createRemClamp, DEFAULT_HEADLINE as headlineDefault, DEFAULT_TEXT as textDefault };
+exports.buenTypeTailwind = buenTypeTailwind;
+exports.createRemClamp = createRemClamp;
+exports.headlineDefault = DEFAULT_HEADLINE;
+exports.textDefault = DEFAULT_TEXT;
 
-//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.cjs.map
