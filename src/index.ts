@@ -1,58 +1,22 @@
 /**
- * A module that converts an object of headlines and text defs into Tailwind CSS utilities.
+ * Tailwind CSS plugin for typographic scales. Works with both Tailwind v3 and v4.
  *
- * @example
- *
- *  1. Define custom styles, using either the default keys or by expanding upon them
- *
+ * @example Tailwind v4 (recommended)
  * ```ts
- * // type-config.ts
- *
- * const customHeadlines = {
- *   'display-xl': {
- *     fontFamily: "'Inter', 'sans-serif'",
- *     fontWeight: 'bold',
- *     clamp: [4.5, 9],
- *     letterSpacing: '-0.1em',
- *     lineHeight: 1,
- *     textTransform: 'uppercase',
- *   },
- *   // ...
- * }
- *
- * const customTexts = {
- *   'body': {
- *     fontFamily: "'Inter', 'sans-serif'",
- *     fontWeight: 'normal',
- *     fontSize: '1.1rem'
- *     letterSpacing: '0em',
- *     lineHeight: 1.5,
- *     textTransform: 'none',
- *   },
- *   // ...
- * }
+ * // buen-type.plugin.ts
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ * export default createBuenTypePlugin({ customHeadlines, customTexts });
+ * ```
+ * ```css
+ * @import "tailwindcss";
+ * @plugin "./buen-type.plugin.ts";
  * ```
  *
- * 2. Add the custom styles to the plugin
- *
- * ```tsx
+ * @example Tailwind v3
+ * ```ts
  * // tailwind.config.ts
- * import { buenTypeTailwind } from "@muybuen/type";
- * import { customHeadlines, customTexts } from "./type-config";
- *
- * function typePlugin({ addUtilities }) {
- *   buenTypeTailwind({ addUtilities }, {
- *     customHeadlines,
- *     customTexts
- *   });
- * };
- *
- * module.exports = {
- *   //  ...
- *   plugins: [
- *     typePlugin
- *   ]
- * };
+ * import { createBuenTypePlugin } from "@muybuen/type";
+ * export default { plugins: [createBuenTypePlugin()] };
  * ```
  *
  * @module

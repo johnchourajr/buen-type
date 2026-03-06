@@ -12,146 +12,150 @@
 
 ----
 
-A utility library for managing typographic scales in Tailwind CSS.
+A utility library for managing typographic scales in Tailwind CSS. Works with both Tailwind v3 and v4.
 
 **Contents**
-- [@muybuen/type](#muybuentype)
-  - [Installation](#installation)
-    - [With NPM](#with-npm)
-    - [With JSR](#with-jsr)
-  - [Usage](#usage)
-    - [Add Plugin](#add-plugin)
-    - [Custom Type](#custom-type)
-  - [Defaults](#defaults)
-  - [Type Properties](#type-properties)
-    - [Clamp Property](#clamp-property)
-  - [Custom Style Keys](#custom-style-keys)
-  - [Custom Aliases for Styles](#custom-aliases-for-styles)
-  - [Disable default type styles](#disable-default-type-styles)
-  - [Contributing](#contributing)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Tailwind v4 (Recommended)](#tailwind-v4-recommended)
+  - [Tailwind v3](#tailwind-v3)
+  - [Custom Type Definitions](#custom-type-definitions)
+- [Defaults](#defaults)
+- [Type Properties](#type-properties)
+  - [Clamp Property](#clamp-property)
+- [Custom Style Keys](#custom-style-keys)
+- [Custom Aliases for Styles](#custom-aliases-for-styles)
+- [Disable Default Type Styles](#disable-default-type-styles)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
 ### With NPM
 
 ```bash
-# NPM package with NPM
 npm install @muybuen/type
 
-# -or- NPM package with Yarn
+# or with Yarn
 yarn add @muybuen/type
 
-# -or- NPM package with PNPM
+# or with PNPM
 pnpm add @muybuen/type
 ```
 
-
 ### With JSR
 
-**NPM**
 ```bash
-# JSR package with NPM
 npx jsr add @muybuen/type
 
-# -or- JSR package with Demo
+# or with Deno
 deno add @muybuen/type
-
-# -or- JSR package with Yarn
-yarn dlx jsr add @muybuen/type
-
-# -or- JSR package with PNPM
-pnpm dlx jsr add @muybuen/type
 ```
 
 ## Usage
 
-### Add Plugin
+### Tailwind v4 (Recommended)
+
+1. Create a plugin file that configures the typography:
+
+```ts
+// buen-type.plugin.ts
+import { createBuenTypePlugin } from "@muybuen/type";
+
+export default createBuenTypePlugin();
+```
+
+2. Load it in your CSS with the `@plugin` directive:
+
+```css
+@import "tailwindcss";
+@plugin "./buen-type.plugin.ts";
+```
+
+3. Use the generated utility classes:
 
 ```tsx
-// tailwind.config.js
+<h1 className="headline-display-xl">Hello World</h1>
+<p className="text-body">Lorem ipsum dolor sit amet.</p>
+```
 
-import { buenTypeTailwind } from "@muybuen/type";
+### Tailwind v3
 
-module.exports = {
-  //  ...
-  plugins: [
-    buenTypeTailwind
-  ]
+Use `createBuenTypePlugin` in your Tailwind config:
+
+```ts
+// tailwind.config.ts
+import { createBuenTypePlugin } from "@muybuen/type";
+
+export default {
+  plugins: [createBuenTypePlugin()],
 };
 ```
 
-### Custom Type
+Or use the lower-level `buenTypeTailwind` function if you need direct access to `addUtilities`:
 
-1. Define custom styles, using either the default keys. You can also add [custom keys](#custom-style-keys).
+```ts
+// tailwind.config.ts
+import { buenTypeTailwind } from "@muybuen/type";
+
+function typePlugin({ addUtilities }) {
+  buenTypeTailwind({ addUtilities }, {
+    customHeadlines,
+    customTexts,
+  });
+}
+
+export default {
+  plugins: [typePlugin],
+};
+```
+
+### Custom Type Definitions
+
+Define custom styles using either the default keys or your own [custom keys](#custom-style-keys):
 
 ```ts
 // type-config.ts
+import { TypeDefinition } from "@muybuen/type";
 
-const customHeadlines = {
+export const customHeadlines: Record<string, TypeDefinition> = {
   'display-xl': {
-    fontFamily: "'Inter', 'sans-serif'",
+    fontFamily: "'Inter', sans-serif",
     fontWeight: 'bold',
     clamp: [4.5, 9],
     letterSpacing: '-0.1em',
     lineHeight: 1,
     textTransform: 'uppercase',
   },
-  // other headline styles
-}
+};
 
-const customTexts = {
+export const customTexts: Record<string, TypeDefinition> = {
   'body': {
-    fontFamily: "'Inter', 'sans-serif'",
+    fontFamily: "'Inter', sans-serif",
     fontWeight: 'normal',
-    fontSize: '1.1rem'
+    fontSize: '1.1rem',
     letterSpacing: '0em',
     lineHeight: 1.5,
-    textTransform: 'none',
   },
-  // other text styles
-}
+};
 ```
 
-2. Add the custom styles to the plugin
+Pass them to the plugin:
 
-```tsx
-// tailwind.config.ts
-
-import { buenTypeTailwind } from "@muybuen/type";
+```ts
+// buen-type.plugin.ts
+import { createBuenTypePlugin } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
-function typePlugin({ addUtilities }) {
-  buenTypeTailwind({ addUtilities }, {
-    customHeadlines,
-    customTexts
-  });
-};
-
-module.exports = {
-  //  ...
-  plugins: [
-    typePlugin
-  ]
-};
-```
-
-3. Use tailwind utility classes in the code
-
-```tsx
-// SomeComponent.tsx
-
-export const SomeComponent = () => (
-  <div>
-    <h1 className="headline-display-xl">Hello World</h1>
-    <p className="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  </div>
-);
-
+export default createBuenTypePlugin({
+  customHeadlines,
+  customTexts,
+});
 ```
 
 ## Defaults
-The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
+
+The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further customization.
 
 **Default Headline Types:**
 - `display-xxl`
@@ -179,7 +183,6 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 | `textTransform`  | `string`           | The transformation applied to the text (e.g., uppercase).    |
 | `fontSize`       | `string`           | The size of the font.                                        |
 | `clamp`          | `[number, number]` | A tuple defining the minimum and maximum sizes for clamping. |
-| `color`          | `string`           | The color of the text.                                       |
 | `fontStyle`      | `string`           | The style of the font (e.g., normal, italic, oblique).       |
 | `textDecoration` | `string`           | Decorations added to the text (e.g., underline).             |
 | `textShadow`     | `string`           | Adds shadow to the text.                                     |
@@ -191,92 +194,75 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 | `textRendering`  | `string`           | Provides rendering hints to the browser.                     |
 | `hyphens`        | `string`           | Specifies how words should be hyphenated.                    |
 
-
 ### Clamp Property
 
-The clamp property is used to set the range for font sizes for a particular type. The first value represents the minimum size, while the second value represents the maximum size. Consequently, the resulting font size will dynamically scale between 1024px and 1440px.
+The clamp property sets the range for fluid font sizes. The first value is the minimum size in rem, the second is the maximum. Font size scales fluidly between `customMinScreenSize` (default 1024px) and `customMaxScreenSize` (default 1440px).
 
-```tsx
-// type-config.ts
-
+```ts
 const customHeadlines = {
   'display-xl': {
     fontFamily: 'Arial, sans-serif',
     clamp: [4.5, 9],
   },
-  // other styles
-}
+};
+```
+
+To customize the screen size range:
+
+```ts
+createBuenTypePlugin({
+  customHeadlines,
+  customMinScreenSize: 480,
+  customMaxScreenSize: 1920,
+});
 ```
 
 ## Custom Style Keys
 
-When creating custom type definitions, either the default keys can be used or they can be expanded. They should be written in kebab-case strings.
+Custom type definitions can use any kebab-case string as a key. Custom headline keys are prefixed with `headline-` and custom text keys with `text-` when used as Tailwind classes.
 
-The following is an example of how to define custom type definitions:
-
-```tsx
-// type-config.ts
-
+```ts
 const customHeadlines = {
   'custom-display': {
     fontFamily: 'Arial, sans-serif',
-    // use stype properties
+    clamp: [3, 6],
   },
-  // other headline styles
-}
+};
+// Usage: className="headline-custom-display"
 
 const customTexts = {
   'custom-paragraph': {
     fontFamily: 'Arial, sans-serif',
-    // use stype properties
+    fontSize: '1.1rem',
   },
-  // other text styles
-}
+};
+// Usage: className="text-custom-paragraph"
 ```
-
-When using custom styled keys as tailwind classes, they'll be named as `headline-your-key-name`. For example, if your key was `'custom-display'` in the `customHeadlines` object, it would be used as `'headline-custom-display'` class in tailwind.
 
 ## Custom Aliases for Styles
 
-If you're replaceing an existing style in the defaults, you can add a custom alias for the style. This is done by adding a `classAlias` key to the style object.
+Add alternative class names for a style using the `classAlias` property:
 
-```tsx
-// type-config.ts
-
+```ts
 const customHeadlines = {
   'display-xl': {
     fontFamily: 'Arial, sans-serif',
-    classAlias: 'primary-headline',
+    classAlias: ['primary-headline', 'hero-text'],
   },
-  // other headline styles
-}
+};
+// Usage: className="headline-display-xl" or className="primary-headline" or className="hero-text"
 ```
 
-## Disable default type styles
+## Disable Default Type Styles
 
-To disable the default type styles, set the `disableDefaults` option to `true`.
+To use only your custom definitions without any defaults:
 
-```tsx
-// tailwind.config.ts
-
-import { buenTypeTailwind } from "@muybuen/type";
-import { customHeadlines, customTexts } from "./type-config";
-
-function typePlugin({ addUtilities }) {
-  buenTypeTailwind(
-    { addUtilities },
-    {
-      disableDefaults: true,
-    },
-  );
-};
-
-module.exports = {
-  //  ...
-  plugins: [
-    typePlugin
-  ]
-};
+```ts
+createBuenTypePlugin({
+  disableDefaults: true,
+  customHeadlines: { /* ... */ },
+  customTexts: { /* ... */ },
+});
 ```
 
 ## Contributing
