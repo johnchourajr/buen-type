@@ -1,5 +1,5 @@
 /**
- * A module that converts an object of headlinea and text defs into Tailwind CSS utilities.
+ * A module that converts an object of headlines and text defs into Tailwind CSS utilities.
  *
  * @example
  *
