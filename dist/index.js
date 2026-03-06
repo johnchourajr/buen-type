@@ -32,14 +32,14 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
-var src_exports = {};
-__export(src_exports, {
+var index_exports = {};
+__export(index_exports, {
   buenTypeTailwind: () => buenTypeTailwind,
   createRemClamp: () => createRemClamp,
   headlineDefault: () => DEFAULT_HEADLINE,
   textDefault: () => DEFAULT_TEXT
 });
-module.exports = __toCommonJS(src_exports);
+module.exports = __toCommonJS(index_exports);
 
 // src/defaults.ts
 var DEFAULT_HEADLINE = {
@@ -140,7 +140,7 @@ function typedKeys(obj) {
 // src/buenTypeTailwind.ts
 function buenTypeTailwind({ addUtilities }, options) {
   const generateStyles = (definition) => {
-    let styles = {
+    const styles = {
       fontFamily: definition.fontFamily,
       fontWeight: definition.fontWeight,
       lineHeight: definition.lineHeight,
@@ -158,9 +158,6 @@ function buenTypeTailwind({ addUtilities }, options) {
       textRendering: definition.textRendering,
       hyphens: definition.hyphens
     };
-    if (definition.fontSize) {
-      styles.fontSize = definition.fontSize;
-    }
     if (definition.clamp) {
       const customMinScreenSize = (options == null ? void 0 : options.customMinScreenSize) || 1024;
       const customMaxScreenSize = (options == null ? void 0 : options.customMaxScreenSize) || 1440;
@@ -177,7 +174,7 @@ function buenTypeTailwind({ addUtilities }, options) {
   const mergedHeadlines = __spreadValues(__spreadValues({}, defaultHeadlines), options == null ? void 0 : options.customHeadlines);
   const defaultTexts = (options == null ? void 0 : options.disableDefaults) ? null : DEFAULT_TEXT;
   const mergedTexts = __spreadValues(__spreadValues({}, defaultTexts), options == null ? void 0 : options.customTexts);
-  let headlineUtilities = {};
+  const headlineUtilities = {};
   typedKeys(mergedHeadlines).forEach((key) => {
     const style = mergedHeadlines[key];
     if (style) {
@@ -189,7 +186,7 @@ function buenTypeTailwind({ addUtilities }, options) {
       }
     }
   });
-  let textUtilities = {};
+  const textUtilities = {};
   typedKeys(mergedTexts).forEach((key) => {
     const style = mergedTexts[key];
     if (style) {
