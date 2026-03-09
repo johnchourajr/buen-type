@@ -3,9 +3,8 @@ import { CSSOutput, CustomTypeDefinitions, TypeDefinition } from "./types";
 import { createRemClamp } from "./utils/createRemClamp";
 import { typedKeys } from "./utils/typedKeys";
 
-type AddUtilities = {
-  (utilities: Record<string, CSSOutput>): void;
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AddUtilities = (utilities: Record<string, any>) => void;
 
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.

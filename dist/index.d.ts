@@ -55,10 +55,6 @@ type TypeDefinition = {
     hyphens?: "none" | "manual" | "auto" | (string & {});
 };
 /**
- * CSS output properties, mirrors TypeDefinition excluding clamp and _id
- */
-type CSSOutput = Omit<TypeDefinition, "_id" | "classAlias" | "clamp">;
-/**
  * Default type definitions for headlines
  */
 type TypeDefinitionHeadlines = Record<DefaultHeadlineTypes, TypeDefinition>;
@@ -77,9 +73,7 @@ type CustomTypeDefinitions = {
     customMaxScreenSize?: number;
 };
 
-type AddUtilities = {
-    (utilities: Record<string, CSSOutput>): void;
-};
+type AddUtilities = (utilities: Record<string, any>) => void;
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *
