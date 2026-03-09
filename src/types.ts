@@ -50,7 +50,7 @@ export type TypeDefinition = {
   _id?: string;
   classAlias?: string[];
   fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
-  fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
+  fontWeight?: "normal" | "bold" | "lighter" | "bolder" | number | (string & {});
   lineHeight?: number | (string & {});
   letterSpacing?: (string & {});
   textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});

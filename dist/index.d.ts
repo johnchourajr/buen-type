@@ -37,7 +37,7 @@ type TypeDefinition = {
     _id?: string;
     classAlias?: string[];
     fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
-    fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
+    fontWeight?: "normal" | "bold" | "lighter" | "bolder" | number | (string & {});
     lineHeight?: number | (string & {});
     letterSpacing?: (string & {});
     textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
@@ -54,10 +54,6 @@ type TypeDefinition = {
     textRendering?: "auto" | "optimizeLegibility" | "optimizeSpeed" | "geometricPrecision" | (string & {});
     hyphens?: "none" | "manual" | "auto" | (string & {});
 };
-/**
- * CSS output properties, mirrors TypeDefinition excluding clamp and _id
- */
-type CSSOutput = Omit<TypeDefinition, "_id" | "classAlias" | "clamp">;
 /**
  * Default type definitions for headlines
  */
@@ -77,9 +73,7 @@ type CustomTypeDefinitions = {
     customMaxScreenSize?: number;
 };
 
-type AddUtilities = {
-    (utilities: Record<string, CSSOutput>): void;
-};
+type AddUtilities = (utilities: Record<string, any>) => void;
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *
