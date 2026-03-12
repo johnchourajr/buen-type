@@ -67,7 +67,7 @@ export default function Scale() {
         className={clsx(
           "left-[1424px]",
           "after:content-['1440px']",
-          "before:content-['cieling'] ",
+          "before:content-['ceiling'] ",
         )}
       />
     </ScalePageWrapper>

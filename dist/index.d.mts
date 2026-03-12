@@ -35,24 +35,24 @@ type DefaultTextTypes = "title" | "paragraph" | "string" | "body" | "caption";
  */
 type TypeDefinition = {
     _id?: string;
-    classAlias?: string[] | ["some-class-alias"];
-    fontFamily?: string | "sans-serif" | "monospace";
-    fontWeight?: string | number | "normal" | "bold" | 400 | 700;
-    lineHeight?: string | number | 1.5 | "150%" | "1.5em";
-    letterSpacing?: string | "-0.01em";
-    textTransform?: string | "uppercase" | "lowercase" | "capitalize" | "none";
-    fontSize?: string | "1.5rem" | "1.5em" | "150%" | "1.5vw";
+    classAlias?: string[];
+    fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
+    fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
+    lineHeight?: number | (string & {});
+    letterSpacing?: (string & {});
+    textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
+    fontSize?: (string & {});
     clamp?: [number, number];
-    fontStyle?: string | "normal" | "italic" | "oblique";
-    textDecoration?: string | "underline" | "overline" | "line-through" | "none";
-    textShadow?: string | "1px 1px 2px black";
-    whiteSpace?: string | "normal" | "nowrap" | "pre";
-    wordSpacing?: string | "normal" | "0.25em";
-    textOverflow?: string | "clip" | "ellipsis";
-    direction?: string | "ltr" | "rtl";
-    writingMode?: string | "horizontal-tb" | "vertical-rl";
-    textRendering?: string | "auto" | "optimizeLegibility" | "geometricPrecision";
-    hyphens?: string | "none" | "manual" | "auto";
+    fontStyle?: "normal" | "italic" | "oblique" | (string & {});
+    textDecoration?: "underline" | "overline" | "line-through" | "none" | (string & {});
+    textShadow?: "none" | (string & {});
+    whiteSpace?: "normal" | "nowrap" | "pre" | "pre-wrap" | "pre-line" | (string & {});
+    wordSpacing?: "normal" | (string & {});
+    textOverflow?: "clip" | "ellipsis" | (string & {});
+    direction?: "ltr" | "rtl" | (string & {});
+    writingMode?: "horizontal-tb" | "vertical-rl" | "vertical-lr" | (string & {});
+    textRendering?: "auto" | "optimizeLegibility" | "optimizeSpeed" | "geometricPrecision" | (string & {});
+    hyphens?: "none" | "manual" | "auto" | (string & {});
 };
 /**
  * Default type definitions for headlines
@@ -73,9 +73,7 @@ type CustomTypeDefinitions = {
     customMaxScreenSize?: number;
 };
 
-type AddUtilities = {
-    (utilities: Record<string, any>, options?: any): void;
-};
+type AddUtilities = (utilities: Record<string, any>) => void;
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
  *

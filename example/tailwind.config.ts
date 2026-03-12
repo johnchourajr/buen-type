@@ -29,7 +29,7 @@ const config: Config = {
       "2": "2px",
       "3": "3px",
     },
-    color: {
+    colors: {
       foreground: "#00ff0a",
       background: "#000000",
     },

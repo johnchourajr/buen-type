@@ -1,11 +1,10 @@
 import { DEFAULT_HEADLINE, DEFAULT_TEXT } from "./defaults";
-import { CustomTypeDefinitions, TypeDefinition } from "./types";
+import { CSSOutput, CustomTypeDefinitions, TypeDefinition } from "./types";
 import { createRemClamp } from "./utils/createRemClamp";
 import { typedKeys } from "./utils/typedKeys";
 
-type AddUtilities = {
-  (utilities: Record<string, any>, options?: any): void;
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AddUtilities = (utilities: Record<string, any>) => void;
 
 /**
  * A module that converts an object of headlines and text definitions into Tailwind CSS utilities.
@@ -18,8 +17,8 @@ export function buenTypeTailwind(
   { addUtilities }: { addUtilities: AddUtilities },
   options?: CustomTypeDefinitions,
 ): void {
-  const generateStyles = (definition: TypeDefinition) => {
-    let styles: TypeDefinition = {
+  const generateStyles = (definition: TypeDefinition): CSSOutput => {
+    const styles: CSSOutput = {
       fontFamily: definition.fontFamily,
       fontWeight: definition.fontWeight,
       lineHeight: definition.lineHeight,
@@ -37,9 +36,6 @@ export function buenTypeTailwind(
       textRendering: definition.textRendering,
       hyphens: definition.hyphens,
     };
-    if (definition.fontSize) {
-      styles.fontSize = definition.fontSize;
-    }
     if (definition.clamp) {
       const customMinScreenSize = options?.customMinScreenSize || 1024;
       const customMaxScreenSize = options?.customMaxScreenSize || 1440;
@@ -67,7 +63,7 @@ export function buenTypeTailwind(
   const defaultTexts = options?.disableDefaults ? null : DEFAULT_TEXT;
   const mergedTexts = { ...defaultTexts, ...options?.customTexts };
 
-  let headlineUtilities: Record<string, any> = {};
+  const headlineUtilities: Record<string, CSSOutput> = {};
   typedKeys(mergedHeadlines).forEach((key) => {
     const style = mergedHeadlines[key];
     if (style) {
@@ -80,7 +76,7 @@ export function buenTypeTailwind(
     }
   });
 
-  let textUtilities: Record<string, any> = {};
+  const textUtilities: Record<string, CSSOutput> = {};
   typedKeys(mergedTexts).forEach((key) => {
     const style = mergedTexts[key];
     if (style) {

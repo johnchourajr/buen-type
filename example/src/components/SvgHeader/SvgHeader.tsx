@@ -25,7 +25,7 @@ const SvgHeader = ({ className, containerRef }: SvgHeaderProps) => {
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
-  }, []);
+  }, [containerRef]);
   return (
     <svg
       className={clsx("absolute bottom-0 w-full aspect-[23.6/9]", className)}

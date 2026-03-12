@@ -1,4 +1,4 @@
-import { TypeDefinition } from "@muybuen/type";
+import type { TypeDefinition } from "../../../src/types";
 
 export const customTexts: Record<
   "body" | "string" | "caption",
