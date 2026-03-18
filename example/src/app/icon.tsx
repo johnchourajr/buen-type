@@ -1,8 +1,8 @@
 import { SvgFavicon } from "@/svg/SvgFavicon";
 import { ImageResponse } from "next/og";
 
-// Route segment config
-export const runtime = "edge";
+// Route segment config (node runtime for static export)
+export const dynamic = "force-static";
 
 // Image metadata
 export const size = {

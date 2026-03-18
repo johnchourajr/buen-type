@@ -1,6 +1,4 @@
-import containerQueries from "@tailwindcss/container-queries";
-import type { Config } from "tailwindcss";
-import { PluginAPI } from "tailwindcss/types/config";
+import type { Config, PluginAPI } from "tailwindcss/plugin";
 import { buenTypeTailwind } from "../src/index";
 import { customTexts } from "./src/config/type";
 
@@ -19,7 +17,7 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,mdx}",
   ],
   theme: {
     borderWidth: {
@@ -63,7 +61,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [typePlugin, containerQueries],
+  plugins: [typePlugin],
 };
 
 export default config;

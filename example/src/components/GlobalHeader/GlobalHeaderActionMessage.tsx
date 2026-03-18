@@ -8,11 +8,10 @@ export function GlobalHeaderActionMessage({ text }: { text: string }) {
   };
 
   return (
-    <motion.span
-      className="absolute flex items-center justify-end top-0 bottom-0 right-0 px-3 bg-gradient-to-l from-black to-transparent pointer-events-none w-1/2 text-end"
-      {...animationProps}
-    >
-      <pre className="!font-mono text-caption">{text}</pre>
+    <motion.span {...animationProps}>
+      <span className="absolute flex items-center justify-end top-0 bottom-0 right-0 px-3 bg-gradient-to-l from-black to-transparent pointer-events-none w-1/2 text-end">
+        <pre className="!font-mono text-caption">{text}</pre>
+      </span>
     </motion.span>
   );
 }

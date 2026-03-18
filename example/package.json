@@ -2,6 +2,7 @@
   "name": "example",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --port 3004",
     "build": "next build",
@@ -9,27 +10,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@muybuen/type": "^1.1.3",
-    "@tailwindcss/container-queries": "^0.1.1",
+    "@muybuen/type": "1.1.8",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
-    "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
     "react-resizable": "^3.0.5",
     "three": "^0.172.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@types/react-resizable": "^3.0.7",
     "@types/three": "^0.172.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "^15",
     "postcss": "^8",
     "shiki": "^1.9.0",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }

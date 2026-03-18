@@ -6,7 +6,7 @@ import { logotype } from "./logotype";
 
 type SvgHeaderProps = {
   className?: string;
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
 };
 
 const SvgHeader = ({ className, containerRef }: SvgHeaderProps) => {
