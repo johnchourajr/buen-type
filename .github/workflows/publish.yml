@@ -1,9 +1,10 @@
-name: Publish
+name: Publish to JSR
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*.*.*" # Matches the same tags as npm-publish.yml, so npm and JSR ship together
+  workflow_dispatch: # Manual re-run if a publish needs retrying
 
 jobs:
   publish:
