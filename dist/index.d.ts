@@ -39,9 +39,9 @@ type TypeDefinition = {
     fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
     fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
     lineHeight?: number | (string & {});
-    letterSpacing?: (string & {});
+    letterSpacing?: string & {};
     textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
-    fontSize?: (string & {});
+    fontSize?: string & {};
     clamp?: [number, number];
     fontStyle?: "normal" | "italic" | "oblique" | (string & {});
     textDecoration?: "underline" | "overline" | "line-through" | "none" | (string & {});

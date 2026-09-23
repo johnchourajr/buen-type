@@ -63,10 +63,10 @@ Many properties used `string | "specific-value"` which collapses to just `string
 
 ## 5. Dev Dependency Upgrades (Applied)
 
-| Package    | Before  | After   |
-| ---------- | ------- | ------- |
-| typescript | ^5.4.5  | ^5.8.3  |
-| tsup       | ^8.0.0  | ^8.5.1  |
+| Package    | Before | After  |
+| ---------- | ------ | ------ |
+| typescript | ^5.4.5 | ^5.8.3 |
+| tsup       | ^8.0.0 | ^8.5.1 |
 
 ---
 
@@ -81,6 +81,7 @@ These are larger changes that affect the library API, the example app architectu
 **Impact:** Tailwind v3 has a v3-lts tag (3.4.19) so existing users aren't broken yet, but v4 adoption is growing. The plugin will need a v4-compatible path.
 
 **Recommendation:**
+
 - Keep v3 support as-is for now
 - Add a v4-compatible export using the new `@plugin` / `@utility` CSS-first API
 - Consider a major version bump (2.0) that targets v4 natively
@@ -90,6 +91,7 @@ These are larger changes that affect the library API, the example app architectu
 
 **Current:** Example app uses `framer-motion` ^11.2.10.
 **Latest:** Package renamed to `motion` (motion.dev). Migration is straightforward:
+
 1. `npm uninstall framer-motion && npm install motion`
 2. Change all imports from `"framer-motion"` to `"motion/react"`
 
@@ -101,6 +103,7 @@ This only affects the example app, not the library itself.
 **Latest:** 15.3.1 stable.
 
 Key changes:
+
 - `params` and `searchParams` are now async (needs `await` in page/layout components)
 - React 19 required
 - New caching defaults
@@ -114,6 +117,7 @@ Since this is only the example/docs site, risk is low.
 **Latest:** 19.2.4
 
 Coupled to the Next.js 15 upgrade. Key changes:
+
 - `ref` forwarding simplified (no more `forwardRef` needed)
 - `use()` hook for promises and context
 - Server Components improvements
@@ -130,6 +134,7 @@ Not urgent since tsup still works fine and the library is small.
 ### 6.6 Add Testing (Low Priority but Valuable)
 
 No tests exist for the library. Recommended minimum:
+
 - Unit tests for `createRemClamp` (pure function, easy to test)
 - Unit tests for `buenTypeTailwind` output (verify utility generation)
 - Use Vitest (fast, TypeScript-native, ESM-first)
@@ -137,6 +142,7 @@ No tests exist for the library. Recommended minimum:
 ### 6.7 Pre-commit Hooks
 
 No linting or formatting runs before commit. Consider:
+
 - `husky` + `lint-staged` to run Prettier and type-check on staged files
 - Prevents publishing broken code
 

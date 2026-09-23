@@ -8,9 +8,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "declaration": true, // Generate .d.ts files for TypeScript types
-    "sourceMap": true,   // Generate source maps
+    "sourceMap": true, // Generate source maps
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

@@ -9,12 +9,12 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/johnchourajr/type/graphs/commit-activity)
 
-
-----
+---
 
 A utility library for managing typographic scales in Tailwind CSS.
 
 **Contents**
+
 - [@muybuen/type](#muybuentype)
   - [Installation](#installation)
     - [With NPM](#with-npm)
@@ -46,10 +46,10 @@ yarn add @muybuen/type
 pnpm add @muybuen/type
 ```
 
-
 ### With JSR
 
 **NPM**
+
 ```bash
 # JSR package with NPM
 npx jsr add @muybuen/type
@@ -75,9 +75,7 @@ import { buenTypeTailwind } from "@muybuen/type";
 
 module.exports = {
   //  ...
-  plugins: [
-    buenTypeTailwind
-  ]
+  plugins: [buenTypeTailwind],
 };
 ```
 
@@ -122,17 +120,18 @@ import { buenTypeTailwind } from "@muybuen/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {
-  buenTypeTailwind({ addUtilities }, {
-    customHeadlines,
-    customTexts
-  });
-};
+  buenTypeTailwind(
+    { addUtilities },
+    {
+      customHeadlines,
+      customTexts,
+    },
+  );
+}
 
 module.exports = {
   //  ...
-  plugins: [
-    typePlugin
-  ]
+  plugins: [typePlugin],
 };
 ```
 
@@ -144,16 +143,19 @@ module.exports = {
 export const SomeComponent = () => (
   <div>
     <h1 className="headline-display-xl">Hello World</h1>
-    <p className="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p className="text-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
   </div>
 );
-
 ```
 
 ## Defaults
+
 The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
 
 **Default Headline Types:**
+
 - `display-xxl`
 - `display-xl`
 - `display-lg`
@@ -162,6 +164,7 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 - `display-xs`
 
 **Default Text Types:**
+
 - `title`
 - `paragraph`
 - `string`
@@ -191,7 +194,6 @@ The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/def
 | `textRendering`  | `string`           | Provides rendering hints to the browser.                     |
 | `hyphens`        | `string`           | Specifies how words should be hyphenated.                    |
 
-
 ### Clamp Property
 
 The clamp property is used to set the range for font sizes for a particular type. The first value represents the minimum size, while the second value represents the maximum size. Consequently, the resulting font size will dynamically scale between 1024px and 1440px.
@@ -200,12 +202,12 @@ The clamp property is used to set the range for font sizes for a particular type
 // type-config.ts
 
 const customHeadlines = {
-  'display-xl': {
-    fontFamily: 'Arial, sans-serif',
+  "display-xl": {
+    fontFamily: "Arial, sans-serif",
     clamp: [4.5, 9],
   },
   // other styles
-}
+};
 ```
 
 ## Custom Style Keys
@@ -218,20 +220,20 @@ The following is an example of how to define custom type definitions:
 // type-config.ts
 
 const customHeadlines = {
-  'custom-display': {
-    fontFamily: 'Arial, sans-serif',
+  "custom-display": {
+    fontFamily: "Arial, sans-serif",
     // use stype properties
   },
   // other headline styles
-}
+};
 
 const customTexts = {
-  'custom-paragraph': {
-    fontFamily: 'Arial, sans-serif',
+  "custom-paragraph": {
+    fontFamily: "Arial, sans-serif",
     // use stype properties
   },
   // other text styles
-}
+};
 ```
 
 When using custom styled keys as tailwind classes, they'll be named as `headline-your-key-name`. For example, if your key was `'custom-display'` in the `customHeadlines` object, it would be used as `'headline-custom-display'` class in tailwind.
@@ -244,12 +246,12 @@ If you're replaceing an existing style in the defaults, you can add a custom ali
 // type-config.ts
 
 const customHeadlines = {
-  'display-xl': {
-    fontFamily: 'Arial, sans-serif',
-    classAlias: 'primary-headline',
+  "display-xl": {
+    fontFamily: "Arial, sans-serif",
+    classAlias: "primary-headline",
   },
   // other headline styles
-}
+};
 ```
 
 ## Disable default type styles
@@ -269,13 +271,11 @@ function typePlugin({ addUtilities }) {
       disableDefaults: true,
     },
   );
-};
+}
 
 module.exports = {
   //  ...
-  plugins: [
-    typePlugin
-  ]
+  plugins: [typePlugin],
 };
 ```
 

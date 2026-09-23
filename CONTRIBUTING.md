@@ -5,9 +5,9 @@ We would like to extend our gratitude to the following individuals who have cont
 ## Core Team
 
 - **John Choura Jr.**
-  - *Role*: Project Maintainer
-  - *GitHub*: [johnchourajr](https://github.com/johnchourajr)
-  - *Contributions*: Initial project setup, core development, documentation
+  - _Role_: Project Maintainer
+  - _GitHub_: [johnchourajr](https://github.com/johnchourajr)
+  - _Contributions_: Initial project setup, core development, documentation
 
 ## How to Contribute
 
@@ -24,4 +24,3 @@ We welcome contributions from the community. If you would like to contribute, pl
 ## Contributors List
 
 If you have contributed to this project and would like to be added to this list, please open a pull request with your information.
-

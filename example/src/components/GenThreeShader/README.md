@@ -5,8 +5,8 @@ A React component that renders customizable WebGL shaders using Three.js.
 ## Usage
 
 ```tsx
-import { GenThreeShader } from './GenThreeShader';
-import { kaleidoscopeShader } from './shaders/kaleidoscopeShader';
+import { GenThreeShader } from "./GenThreeShader";
+import { kaleidoscopeShader } from "./shaders/kaleidoscopeShader";
 
 const MyComponent = () => {
   const shaderConfig = {
@@ -19,10 +19,7 @@ const MyComponent = () => {
   };
 
   return (
-    <GenThreeShader
-      shaderConfig={shaderConfig}
-      className="w-full h-full"
-    />
+    <GenThreeShader shaderConfig={shaderConfig} className="w-full h-full" />
   );
 };
 ```
@@ -37,9 +34,9 @@ const MyComponent = () => {
 
 ```typescript
 type ShaderConfig = {
-  vertexShader?: string;      // Optional custom vertex shader
-  fragmentShader: string;     // Required fragment shader code
-  uniforms?: Record<string, THREE.IUniform>;  // Optional uniforms
+  vertexShader?: string; // Optional custom vertex shader
+  fragmentShader: string; // Required fragment shader code
+  uniforms?: Record<string, THREE.IUniform>; // Optional uniforms
 };
 ```
 
@@ -68,3 +65,4 @@ const customConfig = {
     customColor: { value: new THREE.Color(1, 0, 0) },
   },
 };
+```

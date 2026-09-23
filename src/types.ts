@@ -49,22 +49,63 @@ export type DefaultTextTypes =
 export type TypeDefinition = {
   _id?: string;
   classAlias?: string[];
-  fontFamily?: "sans-serif" | "serif" | "monospace" | "cursive" | "fantasy" | (string & {});
-  fontWeight?: "normal" | "bold" | "lighter" | "bolder" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | (string & {});
+  fontFamily?:
+    | "sans-serif"
+    | "serif"
+    | "monospace"
+    | "cursive"
+    | "fantasy"
+    | (string & {});
+  fontWeight?:
+    | "normal"
+    | "bold"
+    | "lighter"
+    | "bolder"
+    | 100
+    | 200
+    | 300
+    | 400
+    | 500
+    | 600
+    | 700
+    | 800
+    | 900
+    | (string & {});
   lineHeight?: number | (string & {});
-  letterSpacing?: (string & {});
-  textTransform?: "uppercase" | "lowercase" | "capitalize" | "none" | (string & {});
-  fontSize?: (string & {});
+  letterSpacing?: string & {};
+  textTransform?:
+    | "uppercase"
+    | "lowercase"
+    | "capitalize"
+    | "none"
+    | (string & {});
+  fontSize?: string & {};
   clamp?: [number, number];
   fontStyle?: "normal" | "italic" | "oblique" | (string & {});
-  textDecoration?: "underline" | "overline" | "line-through" | "none" | (string & {});
+  textDecoration?:
+    | "underline"
+    | "overline"
+    | "line-through"
+    | "none"
+    | (string & {});
   textShadow?: "none" | (string & {});
-  whiteSpace?: "normal" | "nowrap" | "pre" | "pre-wrap" | "pre-line" | (string & {});
+  whiteSpace?:
+    | "normal"
+    | "nowrap"
+    | "pre"
+    | "pre-wrap"
+    | "pre-line"
+    | (string & {});
   wordSpacing?: "normal" | (string & {});
   textOverflow?: "clip" | "ellipsis" | (string & {});
   direction?: "ltr" | "rtl" | (string & {});
   writingMode?: "horizontal-tb" | "vertical-rl" | "vertical-lr" | (string & {});
-  textRendering?: "auto" | "optimizeLegibility" | "optimizeSpeed" | "geometricPrecision" | (string & {});
+  textRendering?:
+    | "auto"
+    | "optimizeLegibility"
+    | "optimizeSpeed"
+    | "geometricPrecision"
+    | (string & {});
   hyphens?: "none" | "manual" | "auto" | (string & {});
 };
 
