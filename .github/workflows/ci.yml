@@ -22,3 +22,11 @@ jobs:
       - run: npx prettier --check .
       - run: npm run type-check
       - run: npm run build
+
+      # vercel.json deploys `cd example && npm run build`, which nothing in CI
+      # ran. Three dependency PRs went green here while their Vercel deploy
+      # failed. Mirrors vercel.json exactly so the two cannot disagree.
+      - name: Install example app
+        run: cd example && npm install --legacy-peer-deps
+      - name: Build example app (what Vercel deploys)
+        run: cd example && npm run build
