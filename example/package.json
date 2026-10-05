@@ -17,7 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-resizable": "^3.0.5",
-    "three": "^0.172.0"
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@types/node": "^20",
