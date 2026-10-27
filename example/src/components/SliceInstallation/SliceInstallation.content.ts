@@ -4,13 +4,13 @@ export const sliceInstallTerminal: PanelProps[] = [
   {
     title: "terminal",
     content: `
-  npx jsr add @muybuen/type
+  npx jsr add @bueno-dev/type
   // or
-  deno add @muybuen/type
+  deno add @bueno-dev/type
   // or
-  yarn dlx jsr add @muybuen/type
+  yarn dlx jsr add @bueno-dev/type
   // or
-  pnpm dlx jsr add @muybuen/type
+  pnpm dlx jsr add @bueno-dev/type
     `,
   },
 ];
@@ -19,7 +19,7 @@ export const sliceInstallConfig: PanelProps[] = [
   {
     title: "tailwind.config.ts",
     content: `
-  import { buenTypeTailwind } from "@muybuen/type";
+  import { buenTypeTailwind } from "@bueno-dev/type";
 
   /** @type {import('tailwindcss').Config} */
   module.exports = {
@@ -66,7 +66,7 @@ export const sliceInstallCustom: PanelProps[] = [
   {
     title: "tailwind.config.js",
     content: `
-  import { buenTypeTailwind } from "@muybuen/type";
+  import { buenTypeTailwind } from "@bueno-dev/type";
   import { customHeadlines, customTexts } from "./type-config";
 
   function typePlugin({ addUtilities }) {
