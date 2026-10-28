@@ -156,7 +156,7 @@ No linting or formatting runs before commit. Consider:
 
 ### 7.2 Import paths in example
 
-Some components import from `../../../../src/index` instead of `@muybuen/type`. Works for local dev but is brittle and doesn't match the documented API.
+Some components import from `../../../../src/index` instead of `@bueno-dev/type`. Works for local dev but is brittle and doesn't match the documented API.
 
 ### 7.3 Copy/timeout logic duplication
 

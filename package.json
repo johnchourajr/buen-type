@@ -1,6 +1,6 @@
 {
-  "name": "@muybuen/type",
-  "version": "1.1.7",
+  "name": "@bueno-dev/type",
+  "version": "1.1.9",
   "author": "John Choura",
   "license": "MIT",
   "exports": {
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnchourajr/buen-type.git"
+    "url": "git+https://github.com/johnchourajr/bueno-type.git"
   }
 }

@@ -1,10 +1,10 @@
-# @muybuen/type
+# @bueno-dev/type
 
-![image](https://github.com/johnchourajr/buen-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
+![image](https://github.com/johnchourajr/bueno-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
 
-[![npm version](https://badge.fury.io/js/%40muybuen%2Ftype.svg)](https://badge.fury.io/js/%40muybuen%2Ftype)
+[![npm version](https://badge.fury.io/js/%40bueno-dev%2Ftype.svg)](https://badge.fury.io/js/%40bueno-dev%2Ftype)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm downloads](https://img.shields.io/npm/dm/@muybuen/type.svg)](https://www.npmjs.com/package/@muybuen/type)
+[![npm downloads](https://img.shields.io/npm/dm/@bueno-dev/type.svg)](https://www.npmjs.com/package/@bueno-dev/type)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/johnchourajr/type/graphs/commit-activity)
@@ -15,7 +15,7 @@ A utility library for managing typographic scales in Tailwind CSS.
 
 **Contents**
 
-- [@muybuen/type](#muybuentype)
+- [@bueno-dev/type](#bueno-devtype)
   - [Installation](#installation)
     - [With NPM](#with-npm)
     - [With JSR](#with-jsr)
@@ -37,13 +37,13 @@ A utility library for managing typographic scales in Tailwind CSS.
 
 ```bash
 # NPM package with NPM
-npm install @muybuen/type
+npm install @bueno-dev/type
 
 # -or- NPM package with Yarn
-yarn add @muybuen/type
+yarn add @bueno-dev/type
 
 # -or- NPM package with PNPM
-pnpm add @muybuen/type
+pnpm add @bueno-dev/type
 ```
 
 ### With JSR
@@ -52,16 +52,16 @@ pnpm add @muybuen/type
 
 ```bash
 # JSR package with NPM
-npx jsr add @muybuen/type
+npx jsr add @bueno-dev/type
 
 # -or- JSR package with Demo
-deno add @muybuen/type
+deno add @bueno-dev/type
 
 # -or- JSR package with Yarn
-yarn dlx jsr add @muybuen/type
+yarn dlx jsr add @bueno-dev/type
 
 # -or- JSR package with PNPM
-pnpm dlx jsr add @muybuen/type
+pnpm dlx jsr add @bueno-dev/type
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ pnpm dlx jsr add @muybuen/type
 ```tsx
 // tailwind.config.js
 
-import { buenTypeTailwind } from "@muybuen/type";
+import { buenTypeTailwind } from "@bueno-dev/type";
 
 module.exports = {
   //  ...
@@ -116,7 +116,7 @@ const customTexts = {
 ```tsx
 // tailwind.config.ts
 
-import { buenTypeTailwind } from "@muybuen/type";
+import { buenTypeTailwind } from "@bueno-dev/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {
@@ -152,7 +152,7 @@ export const SomeComponent = () => (
 
 ## Defaults
 
-The [default styles](https://github.com/johnchourajr/buen-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
+The [default styles](https://github.com/johnchourajr/bueno-type/blob/main/src/defaults.ts) provide a basic type scale for further development.
 
 **Default Headline Types:**
 
@@ -261,7 +261,7 @@ To disable the default type styles, set the `disableDefaults` option to `true`.
 ```tsx
 // tailwind.config.ts
 
-import { buenTypeTailwind } from "@muybuen/type";
+import { buenTypeTailwind } from "@bueno-dev/type";
 import { customHeadlines, customTexts } from "./type-config";
 
 function typePlugin({ addUtilities }) {
@@ -281,8 +281,8 @@ module.exports = {
 
 ## Contributing
 
-This project is maintained by John Choura, but it open to contributions from anyone. See [CONTRIBUTORS](https://github.com/johnchourajr/buen-type/blob/main/CONTRIBUTORS.md) for a guide on how to contribute.
+This project is maintained by John Choura, but it open to contributions from anyone. See [CONTRIBUTORS](https://github.com/johnchourajr/bueno-type/blob/main/CONTRIBUTORS.md) for a guide on how to contribute.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/johnchourajr/buen-type/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/johnchourajr/bueno-type/blob/main/LICENSE) file for details.

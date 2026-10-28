@@ -37,7 +37,7 @@
  *
  * ```tsx
  * // tailwind.config.ts
- * import { buenTypeTailwind } from "@muybuen/type";
+ * import { buenTypeTailwind } from "@bueno-dev/type";
  * import { customHeadlines, customTexts } from "./type-config";
  *
  * function typePlugin({ addUtilities }) {
@@ -64,7 +64,7 @@ export { buenTypeTailwind } from "./buenTypeTailwind";
  *
  * @example
  * ```ts
- * import { createRemClamp } from "@muybuen/type";
+ * import { createRemClamp } from "@bueno-dev/type";
  *
  * createRemClamp(1, 2, 1024, 1440); // "clamp(1rem, 1rem + 0.06666666666666667vw, 2rem)"
  * ```
