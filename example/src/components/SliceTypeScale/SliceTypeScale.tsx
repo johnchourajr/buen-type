@@ -6,7 +6,7 @@ import { slicePanelContent } from "./SliceTypeScale.content";
 
 export function SliceTypeScale() {
   return (
-    <SliceWrapper title="FLUID TYPOGRAPHY IS BUEN">
+    <SliceWrapper title="FLUID TYPOGRAPHY IS BUENO">
       <IframeWrapper
         src="/scale"
         className={clsx(
