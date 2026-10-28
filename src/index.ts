@@ -74,7 +74,7 @@ export { buenTypeTailwind } from "./buenTypeTailwind";
 export { createRemClamp } from "./utils/createRemClamp";
 
 /**
- * Types for the Buen Type module, for use when implementing custom type definitions.
+ * Types for the Bueno Type module, for use when implementing custom type definitions.
  *
  * @module
  */

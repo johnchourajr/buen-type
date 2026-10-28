@@ -6,17 +6,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://type.muybuen.dev"),
-  title: "Buen Type",
+  title: "Bueno Type",
   description:
     "A Tailwind CSS Plugin for creating and managing good typography systems",
-  openGraph: {
-    images: [
-      {
-        url: "/og.png",
-        alt: "Buen Type",
-      },
-    ],
-  },
 };
 
 export default function RootLayout({
