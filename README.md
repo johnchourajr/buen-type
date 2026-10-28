@@ -1,6 +1,7 @@
 # @bueno-dev/type
 
-![image](https://github.com/johnchourajr/bueno-type/assets/6431920/0d383554-fe9a-4177-8907-796d9e5b33c7)
+<img width="2400" height="1260" alt="bueno-type" src="https://github.com/user-attachments/assets/0e7fe07f-da0b-41c0-a1cd-55be62c829c6" />
+
 
 [![npm version](https://badge.fury.io/js/%40bueno-dev%2Ftype.svg)](https://badge.fury.io/js/%40bueno-dev%2Ftype)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
