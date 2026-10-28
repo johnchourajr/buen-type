@@ -2,7 +2,6 @@
 
 <img width="2400" height="1260" alt="bueno-type" src="https://github.com/user-attachments/assets/0e7fe07f-da0b-41c0-a1cd-55be62c829c6" />
 
-
 [![npm version](https://badge.fury.io/js/%40bueno-dev%2Ftype.svg)](https://badge.fury.io/js/%40bueno-dev%2Ftype)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/@bueno-dev/type.svg)](https://www.npmjs.com/package/@bueno-dev/type)
