@@ -5,7 +5,7 @@ import React from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://type.dev.bueno.enterprises"),
+  metadataBase: new URL("https://type.oss.bueno.enterprises"),
   title: "Bueno Type",
   description:
     "A Tailwind CSS Plugin for creating and managing good typography systems",
